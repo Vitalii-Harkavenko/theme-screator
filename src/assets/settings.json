@@ -1,0 +1,56 @@
+{
+    "quokka.automaticRestart": true,
+    "quokka.compactMessageOutput": true,
+    "workbench.preferredDarkColorTheme": "Atom One Dark",
+    "screencastMode.mouseIndicatorColor": "#b073ff",
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#3b1b51",
+        "editor.background": "#1e2227"
+    },
+    "editor.tokenColorCustomizations": {
+        "numbers": "#e2a765",
+		"textMateRules": [
+			{
+				"scope": [
+					"source.js keyword.operator",
+                    "source.ts keyword.operator",
+                    "source.tsx keyword.operator"
+				],
+				"settings": {
+					"foreground": "#C678DD"
+				}
+			},
+		]
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "files.autoSave": "afterDelay",
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "prettier.tabWidth": 4,
+    "editor.tabCompletion": "on",
+    "editor.insertSpaces": false,
+    "tailwindCSS.emmetCompletions": true,
+    "tailwindCSS.includeLanguages": {
+        "javascript": "javascript",
+        "javascriptreact": "javascriptreact",
+        "typescript": "typescript",
+        "typescriptreact": "typescriptreact",
+        "css": "css"
+    },
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "tailwindCSS.codeActions": false,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "javascript.preferences.quoteStyle": "double",
+    "typescript.preferences.quoteStyle": "double",
+    "workbench.colorTheme": "Atom One Dark"
+}
