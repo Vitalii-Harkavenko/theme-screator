@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
 
+$bg : #0c0a11;
+$main : #1d1b23;
 @mixin placeholder-styles {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
@@ -32,9 +34,8 @@ html, body, #root {
 	height: 100%;
 	font-family: "Montserrat", Inter, sans-serif;
 }
-$main : #0a0715;
 #root {
-	background-color: $main;
+	background-color: $bg;
 	display: grid;
 	grid-template-columns: 25% 75%;
 	padding-left: 5vw;
@@ -42,10 +43,39 @@ $main : #0a0715;
 	align-items: center;
 
 	.styles-container {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		align-items: center;
+		width: 100%;
+		height: 90%;
+		
+		.search-container {
+			position: relative;
+			width: 100%;
+			height: 2rem;
+			background-color: $main;
+			border-radius: 8px 8px 0 0%;
+
+			.search-svg {
+				position: absolute;
+				left: 0.5rem;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 1.5rem;
+			};
+
+			.search-bar {
+				width: 100%;
+				height: 100%;
+				background-color: transparent;
+			}
+		}
+
+		.styles-picker {
+			display: flex;
+			flex-direction: column;
+			height: calc(100% - 2rem);
+			width: 100%;
+			background-color: $main;
+			border-radius: 0 0 8px 8px;
+		}
 	}
 	.canvas {
 		margin-left: 5%;

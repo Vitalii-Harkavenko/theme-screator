@@ -1,14 +1,19 @@
-import { useState } from "react"
+import { useState } from "react";
+import sreachSvg from "./assets/search.svg";
+import themeTokens from "./assets/settings.json";
 
 export const App = () => {
 
 	const [searchValue, setSearchValue] = useState<string>('');
 
+
     return (
         <>
-            <div id="bebtra" className="styles-container">
+            <div className="styles-container">
                 <div className="search-container">
-                    <div className="some-svg"></div>
+                    <div className="search-svg">
+                        <img src={sreachSvg} alt="search"></img>
+                    </div>
                     <input
                         className="search-bar"
                         type="text"
@@ -17,7 +22,17 @@ export const App = () => {
                         onChange={(e) => setSearchValue(e.target.value)}
                     ></input>
                 </div>
-                <input></input>
+                <div className="styles-picker">
+                {
+                    themeTokens.syntax.map(el => {
+                        return (
+                            <div className={el.class}>
+                                <p>{el.name}</p>
+                            </div>
+                        )
+                    })
+                }    
+                </div>
             </div>
             <div className="canvas"></div>
         </>
