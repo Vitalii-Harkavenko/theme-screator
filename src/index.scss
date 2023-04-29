@@ -35,4 +35,28 @@ html, body, #root {
 $main : #0a0715;
 #root {
 	background-color: $main;
+	display: grid;
+	grid-template-columns: 25% 75%;
+	padding-left: 5vw;
+	padding-right: 5vw;
+	align-items: center;
+
+	.styles-container {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		align-items: center;
+	}
+	.canvas {
+		margin-left: 5%;
+		width: 95%;
+		aspect-ratio: 16 / 9;
+		background-color: #221e2c;
+	}
+}
+.canvas::before {
+	width: 0;
+}
+::-webkit-scrollbar-thumb {
+	width: 1rem;
 }
