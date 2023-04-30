@@ -284,7 +284,7 @@
 	"syntax": [
 		{
 			"class": "strings",
-			"name": "strings",
+			"name": "Strings",
 			"scope": [
 				"string",
 				"string.quoted",
@@ -324,7 +324,7 @@
 		},
 		{
 			"class": "variables",
-			"name": "variables",
+			"name": "Variables",
 			"scope": [
 				"variable",
 				"variable.js",
@@ -433,7 +433,7 @@
 		},
 		{
 			"class": "functions-classes",
-			"name": "functions, classes",
+			"name": "Functions, classes",
 			"scope": [
 				"function.parameter",
 				"function.parameter.ruby",
@@ -488,7 +488,7 @@
 		},
 		{
 			"class": "css-properties",
-			"name": "css properties",
+			"name": "Css properties",
 			"scope": [
 				"source.css support.type.vendored.property-name",
 				"source.scss support.type.vendored.property-name",
@@ -521,7 +521,7 @@
 		},
 		{
 			"class": "paremeters",
-			"name": "paremeters",
+			"name": "Paremeters",
 			"scope": [
 				"meta.var.expr",
 				"variable.parameter",
@@ -549,7 +549,7 @@
 		},
 		{
 			"class": "ts-types",
-			"name": "typeScript types",
+			"name": "TypeScript types",
 			"scope": [
 				"support.type.primitive",
 				"support.type.primitive.ts",
@@ -561,7 +561,7 @@
 		},
 		{
 			"class": "operators",
-			"name": "operators",
+			"name": "Operators",
 			"scope": [
 				"keyword.operator",
 				"keyword.operator.module",
@@ -639,7 +639,7 @@
 		},
 		{
 			"class": "keywords",
-			"name": "keywords",
+			"name": "Keywords",
 			"scope": [
 				"storage.type",
 				"keyword",
@@ -675,7 +675,7 @@
 		},
 		{
 			"class": "tags",
-			"name": "tags, basic selectors",
+			"name": "Tags, basic selectors",
 			"scope": [
 				"entity.name.tag",
 				"entity.name.tag.custom",
@@ -710,7 +710,7 @@
 				"meta.tag.js meta.jsx.children.tsx",
 				"meta.property-list entity.name.tag.reference",
 				"meta.property-list entity.name.tag",
-				"text.html.laravel-blade source.php.embedded.line.html entity.name.tag.laravel-blade",
+				"text.html.laravel-blade source.php.embedded.line.html entity.name.tag.laravel-blade"
 			],
 			"settings": {
 				"foreground": "#ff56a5"
@@ -718,7 +718,7 @@
 		},
 		{
 			"class": "attributes",
-			"name": "attributes",
+			"name": "Attributes",
 			"scope": [
 				"entity.other.attribute-name",
 				"entity.other.attribute-name.js",
@@ -737,7 +737,7 @@
 		},
 		{
 			"class": "punctuation",
-			"name": "punctuation",
+			"name": "Punctuation",
 			"scope": [
 				"punctuation.accessor",
 				"punctuation.terminator",
@@ -825,7 +825,7 @@
 		},
 		{
 			"class": "numbers",
-			"name": "numbers",
+			"name": "Numbers",
 			"scope": [
 				"constant.numeric",
 				"constant.character.numeric"

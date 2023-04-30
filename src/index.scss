@@ -2,6 +2,8 @@
 
 $bg : #0c0a11;
 $main : #1d1b23;
+$text : #cacaca;
+
 @mixin placeholder-styles {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
@@ -20,6 +22,13 @@ input::-moz-placeholder {
 input:-ms-input-placeholder {
 	@include placeholder-styles;
 }
+.styles-container::-webkit-scrollbar {
+	display: none;
+}
+.styles-container {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -30,28 +39,32 @@ h1, h2 {
 	text-align: center;
 }
 html, body, #root {
-  	width: 100%;
-	height: 100%;
+  	width: 100vw;
+	height: 100vh;
 	font-family: "Montserrat", Inter, sans-serif;
 }
 #root {
 	background-color: $bg;
 	display: grid;
-	grid-template-columns: 25% 75%;
-	padding-left: 5vw;
-	padding-right: 5vw;
+	grid-template-columns: 30% 70%;
+	padding-left: 2vw;
+	padding-right: 2vw;
 	align-items: center;
 
 	.styles-container {
 		width: 100%;
 		height: 90%;
+		border-radius: 0.5rem;
+		background-color: $main;
+		color: $text;
+		overflow-y: scroll;
 		
 		.search-container {
 			position: relative;
 			width: 100%;
 			height: 2rem;
-			background-color: $main;
-			border-radius: 8px 8px 0 0%;
+			margin-top: 1rem;
+			margin-bottom: 2rem;
 
 			.search-svg {
 				position: absolute;
@@ -67,26 +80,45 @@ html, body, #root {
 				background-color: transparent;
 			}
 		}
-
 		.styles-picker {
 			display: flex;
 			flex-direction: column;
 			height: calc(100% - 2rem);
 			width: 100%;
-			background-color: $main;
-			border-radius: 0 0 8px 8px;
+			height: 100%;
+			gap: 2rem;
+
+			.styles-wrapper {
+				display: grid;
+				grid-template-columns: 3rem 6rem 1fr;
+				gap: 2rem;
+				width: 95%;
+				margin-left: auto;
+				margin-right: auto;
+				height: 3rem;
+
+				.color-thumb {
+					width: 3rem;
+					height: 3rem;
+					border-radius: 0.5rem;
+				}
+
+				input {
+					width: 6rem;
+					background-color: transparent;
+					color: $text;
+				}
+				p {
+					height: fit-content;
+					align-self: center;
+				}
+			}
 		}
 	}
 	.canvas {
 		margin-left: 5%;
 		width: 95%;
 		aspect-ratio: 16 / 9;
-		background-color: #221e2c;
+		background-color: $main;
 	}
-}
-.canvas::before {
-	width: 0;
-}
-::-webkit-scrollbar-thumb {
-	width: 1rem;
 }
