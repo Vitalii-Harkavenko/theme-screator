@@ -60,9 +60,7 @@ export const App = () => {
             <div className="canvas">
                 <div className="menu-bar">
                     <div className="menus">
-                        <div className="vscode-logo">
-                            <img src={svgs.vscode}></img>
-                        </div>
+                        <img src={svgs.vscode}></img>
                         <p>File</p>
                         <p>Edit</p>
                         <p>Selection</p>
@@ -72,76 +70,77 @@ export const App = () => {
                         <p>Terminal</p>
                         <p>Help</p>
                     </div>
-                    <p>App.tsx - theme-creator - Visual Studio Code</p>
-                    <div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                    <p className="menu-middle">App.tsx - theme-creator - Visual Studio Code</p>
+                    <div className="window-modes">
+                        <img src={svgs.dash}></img>
+                        <img src={svgs.collapse}></img>
+                        <img src={svgs.close}></img>
                     </div>
                 </div>
                 <div className="main-section">
                     <div className="sidebar-container">
                         <div className="activity-bar">
-                            <div className="files"></div>
-                            <div className="search"></div>
-                            <div className="branch"></div>
-                            <div className="debug"></div>
-                            <div className="extensions"></div>
-                            <div className="profile"></div>
-                            <div className="settings"></div>
-                        </div>
-                        <div className="side-bar">
-                            <div className="explorer-wrapper">
-                                <p>EXPLORER</p>
-                                <div className="more"></div>
+                            <img src={svgs.files}></img>
+                            <img src={svgs.search}></img>
+                            <img src={svgs.branch}></img>
+                            <img src={svgs.debug}></img>
+                            <img src={svgs.extensions}></img>
+                            <div className="activity-other">
+                                <img src={svgs.account}></img>
+                                <img src={svgs.settings}></img>
                             </div>
-                            <div className="sidebar-tab">
-                                <div className="arrow"></div>
+                        </div>
+                        <div className="sidebar">
+                            <div className="explorer">
+                                <p>EXPLORER</p>
+                                <img src={svgs.more}></img>
+                            </div>
+                            <div className="project-tab">
+                                <img className="down" src={svgs.arrow}></img>
                                 <p>THEME-CREATOR</p>
                             </div>
                             <div className="project">
-                                <div className="file-wrapper">
-                                    <div className="arrow"></div>
+                                <div className="files1-wrapper">
+                                    <img className="right" src={svgs.arrow}></img>
+                                    <img src={svgs.node}></img>
                                     <p>node_modules</p>
                                 </div>
-                                <div className="file-wrapper">
-                                    <div className="arrow"></div>
+                                <div className="files-wrapper">
+                                    <img className="down" src={svgs.arrow}></img>
+                                    <img src={svgs.src}></img>
                                     <p>src</p>
                                 </div>
                                 <div className="down-root">
-                                    <div className="file-wrapper">
-                                        <div className="space"></div>
-                                        <p>App.tsx</p>
-                                    </div>
-                                    <div className="file-wrapper">
-                                        <div className="space"></div>
-                                        <p>index.scss</p>
-                                    </div>
-                                    <div className="file-wrapper">
-                                        <div className="space"></div>
-                                        <p>main.tsx</p>
-                                    </div>
+                                    <img src={svgs.react}></img>
+                                    <p>App.tsx</p>
+                                    <img src={svgs.scss}></img>
+                                    <p>index.scss</p>
+                                    <img src={svgs.react}></img>
+                                    <p>main.tsx</p>
                                 </div>
-                                <div className="file-wrapper">
+                                <div className="files-wrapper">
                                     <div className="space"></div>
+                                    <img src={svgs.eslint}></img>
                                     <p>.eslintrc.cjs</p>
                                 </div>
-                                <div className="file-wrapper">
+                                <div className="files-wrapper">
                                     <div className="space"></div>
+                                    <img src={svgs.html}></img>
                                     <p>idnex.html</p>
                                 </div>
-                                <div className="file-wrapper">
+                                <div className="files-wrapper">
                                     <div className="space"></div>
+                                    <img src={svgs.more}></img>
                                     <p>other files</p>
                                 </div>
-                            </div>
-                            <div className="sidebar-tab">
-                                <div className="arrow"></div>
-                                <p>OUTLINE</p>
-                            </div>
-                            <div className="sidebar-tab">
-                                <div className="arrow"></div>
-                                <p>TIMELINE</p>
+                                <div className="sidebar-tab">
+                                    <img className="right" src={svgs.arrow}></img>
+                                    <p>OUTLINE</p>
+                                </div>
+                                <div className="sidebar-tab">
+                                   <img className="right" src={svgs.arrow}></img>
+                                    <p>TIMELINE</p>
+                                </div>
                             </div>
                         </div>
                     </div>

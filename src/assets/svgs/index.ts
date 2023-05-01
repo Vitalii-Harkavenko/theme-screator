@@ -5,6 +5,7 @@ export { default as close } from "./close.svg";
 export { default as collapse } from "./collapse.svg";
 export { default as dash } from "./dash.svg";
 export { default as debug } from "./debug.svg";
+export { default as eslint } from "./eslint.svg";
 export { default as extensions } from "./extensions.svg";
 export { default as html } from "./html.svg";
 export { default as more } from "./more.svg";

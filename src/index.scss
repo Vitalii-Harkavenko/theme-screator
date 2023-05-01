@@ -46,18 +46,18 @@ html, body, #root {
 #root {
 	background-color: $bg;
 	display: grid;
-	grid-template-columns: 30% 70%;
-	padding-left: 2vw;
-	padding-right: 2vw;
+	grid-template-columns: 26% 74%;
 	align-items: center;
 
 	.styles-container {
 		width: 100%;
-		height: 90%;
-		border-radius: 0.5rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+		height: 100%;
 		background-color: $main;
 		color: $text;
 		overflow-y: scroll;
+		filter: drop-shadow(5px 0 5px rgba(0, 0, 0, 0.5));
 		
 		.search-container {
 			position: relative;
@@ -116,29 +116,40 @@ html, body, #root {
 		}
 	}
 	.canvas {
-		margin-left: 5%;
-		width: 95%;
+		width: 98%;
+		margin-left: 1%;
+		margin-right: 1%;
 		aspect-ratio: 16 / 9;
 		background-color: $main;
 		font-size: 0.5rem;
 		color: $text;
 
 		.menu-bar {
-			height: 5%;
+			height: 4%;
+			padding-top: 0.5%;
+			padding-bottom: 0.5%;
 			width: 100%;
 			display: flex;
 			gap: 2rem;
 
 			.menus {
-				margin-right: 3rem;
-
-				.vscode-logo {
-					width: 1rem;
-					height: 100%;
-				}
-
+				margin-left: 0.5rem;
 				display: flex;
 				gap: 1rem;
+			}
+
+			.menu-middle {
+				margin-right: auto;
+				margin-left: auto;
+			}
+
+			.window-modes {
+				width: fit-content;
+				gap: 1rem;
+				height: 100%;
+				display: flex;
+				margin-right: 1rem;
+				margin-left: auto;
 			}
 		}
 
@@ -151,6 +162,69 @@ html, body, #root {
 				width: 25%;
 				height: 100%;
 				display: flex;
+
+				.activity-bar {
+					height: 100%;
+					width: 16%;
+					padding: 3%;
+				}
+
+				.sidebar {
+					height: 100%;
+					width: 84%;
+
+					.explorer {
+						height: 6%;
+						width: 100%;
+						padding: 4% 1rem 4% 1rem;
+						display: flex;
+						justify-content: space-between;
+					}
+
+					.project-tab {
+						height: 4%;
+						width: 100%;
+						display: flex;
+						
+						p {
+							height: fit-content;
+							margin-top: auto;
+							margin-bottom: auto;
+						}
+					}
+					
+					.project {
+						width: 100%;
+						height: 90%;
+						padding-left: 5%;
+						padding-right: 5%;
+
+						.files-wrapper {
+							height: 1.2rem;
+							padding-top: 0.1rem;
+							padding-bottom: 0.1rem;
+							display: flex;
+							gap: 0.5rem;
+						}
+
+						.down-root {
+							width: 100%;
+							height: fit-content;
+							margin-left: 2rem;
+							display: grid;
+							grid-template-columns: 1.2rem 1fr;
+
+							> * {
+								padding-top: 0.1rem;
+								padding-bottom: 0.1rem;
+							}
+							p {
+								margin-left: 0.5rem;
+							}
+						}
+
+					}
+				}
 			}
 			.editor-container {
 				width: 75%;
@@ -220,4 +294,14 @@ html, body, #root {
 			}
 		}
 	}
+}
+.down {
+	rotate: 180deg;
+}
+.right {
+	rotate: 90deg;
+}
+.space {
+	width: 1rem;
+	height: 1rem;
 }
