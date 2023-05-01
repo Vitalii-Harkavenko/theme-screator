@@ -82,7 +82,7 @@ export const App = () => {
                         <div className="activity-bar">
                             <img src={svgs.files}></img>
                             <img src={svgs.search}></img>
-                            <img src={svgs.branch}></img>
+                            <img src={svgs.branch} style={{rotate : "180deg", transform : "scaleX(-1)"}}></img>
                             <img src={svgs.debug}></img>
                             <img src={svgs.extensions}></img>
                             <div className="activity-other">
@@ -95,12 +95,12 @@ export const App = () => {
                                 <p>EXPLORER</p>
                                 <img src={svgs.more}></img>
                             </div>
-                            <div className="project-tab">
+                            <div className="sidebar-tab">
                                 <img className="down" src={svgs.arrow}></img>
                                 <p>THEME-CREATOR</p>
                             </div>
                             <div className="project">
-                                <div className="files1-wrapper">
+                                <div className="files-wrapper">
                                     <img className="right" src={svgs.arrow}></img>
                                     <img src={svgs.node}></img>
                                     <p>node_modules</p>
@@ -133,12 +133,14 @@ export const App = () => {
                                     <img src={svgs.more}></img>
                                     <p>other files</p>
                                 </div>
+                            </div>
+                            <div className="sidebar-bottom">
                                 <div className="sidebar-tab">
                                     <img className="right" src={svgs.arrow}></img>
                                     <p>OUTLINE</p>
                                 </div>
                                 <div className="sidebar-tab">
-                                   <img className="right" src={svgs.arrow}></img>
+                                    <img className="right" src={svgs.arrow}></img>
                                     <p>TIMELINE</p>
                                 </div>
                             </div>
@@ -147,22 +149,22 @@ export const App = () => {
                     <div className="editor-container">
                         <div className="tabs">
                             <div className="tab">
-                                <div className="sass-svg"></div>
+                            <img src={svgs.scss}></img>
                                 <p>index.scss</p>
                             </div>
                             <div className="tab">
-                                <div className="sass-svg"></div>
-                                <p>index.scss</p>
-                            </div>
-                            <div className="tab">
-                                <div className="react-svg"></div>
+                                <img src={svgs.react}></img>
                                 <p>App.tsx</p>
+                            </div>
+                            <div className="tab">
+                                <img src={svgs.react}></img>
+                                <p>main.tsx</p>
                             </div>
                         </div>
                         <div className="directive">
                             <p>src</p>
-                            <div className="arrow"></div>
-                            <div className="react-svg"></div>
+                            <img className="right" src={svgs.arrow}></img>
+                            <img src={svgs.react}></img>
                             <p>App.tsx</p>
                         </div>
                         <div className="editor-area">
@@ -207,26 +209,23 @@ export const App = () => {
                                 <p>TERMINAL</p>
                                 <p>OUTPUT</p>
                                 <p>DEBUG CONSOLE</p>
-                                <div className="right">
-                                    <div className="terminal-search">Find something</div>
-                                    <div className="cross"></div>
+                                <div className="terminal-menus">
+                                    <div className="terminal-search">node</div>
+                                    <img src={svgs.close} style={{rotate : "45deg"}}></img>
+                                    <img src={svgs.more}></img>
+                                    <img src={svgs.arrow}></img>
+                                    <img src={svgs.close}></img>
                                 </div>
                             </div>
-                            <p>C:\Users\ur-project &gt;</p>
-                            <p>git</p>
-                            <p>something</p>
+                            <p>C:\Users\ur-project &gt; <span>git</span> <span>something</span></p>
                         </div>
                     </div>
                 </div>
                 <div className="status-bar-wrapper">
-                    <div className="remote-window"></div>
+                    <img src={svgs.remote}></img>
                     <div className="status-bar">
-                        <div className="status-left">
-                            <p>Some text</p>
-                            <p>More text</p>
-                            <p>I'm tired now</p>
-                            <p>Some text</p>
-                        </div>
+                        <img src={svgs.branch} style={{rotate : "180deg", transform : "scaleX(-1)"}}></img>
+                        <p>main*</p>
                         <div className="status-right">
                             <p>Some text</p>
                             <p>More text</p>

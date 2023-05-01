@@ -154,7 +154,7 @@ html, body, #root {
 		}
 
 		.main-section {
-			height: 90%;
+			height: 92%;
 			width: 100%;
 			display: flex;
 
@@ -167,11 +167,26 @@ html, body, #root {
 					height: 100%;
 					width: 16%;
 					padding: 3%;
+					display: flex;
+					flex-direction: column;
+
+					> * {
+						margin-bottom: 1rem;
+					}
+
+					.activity-other {
+						margin-top: auto;
+						display: flex;
+						flex-direction: column;
+						gap: 1rem;
+						margin-bottom: 0;
+					}
 				}
 
 				.sidebar {
 					height: 100%;
 					width: 84%;
+					position: relative;
 
 					.explorer {
 						height: 6%;
@@ -180,22 +195,20 @@ html, body, #root {
 						display: flex;
 						justify-content: space-between;
 					}
-
-					.project-tab {
-						height: 4%;
+					
+					.sidebar-tab {
+						height: 1.5rem;
 						width: 100%;
 						display: flex;
-						
+
 						p {
-							height: fit-content;
 							margin-top: auto;
 							margin-bottom: auto;
 						}
 					}
-					
+
 					.project {
 						width: 100%;
-						height: 90%;
 						padding-left: 5%;
 						padding-right: 5%;
 
@@ -222,7 +235,11 @@ html, body, #root {
 								margin-left: 0.5rem;
 							}
 						}
-
+					}
+					
+					.sidebar-bottom {
+						position: absolute;
+						bottom: 0;
 					}
 				}
 			}
@@ -232,25 +249,39 @@ html, body, #root {
 
 				.tabs {
 					display: flex;
-					height: 6%;
+
+					.tab {
+						display: flex;
+						height: 2rem;
+						padding: 0.5rem;
+					}
 				}
 				.directive {
 					display: flex;
-					height: 4%;
+					height: 1.5rem;
+					padding-top: 0.25rem;
+					padding-bottom: 0.25rem;
 				}
 				.editor-area {
 					display: flex;
 					height: 70%;
 
+					.whitespace {
+						height: 1rem;
+						width: 100%;
+					}
+					.tab-space {
+						margin-left: 1rem;
+					}
 					.gutter {
-						width: 7%;
+						width: 6%;
 						height: 100%;
 						display: flex;
 						flex-direction: column;
 						align-items: center;
 					}
 					.editor {
-						width: 93%;
+						width: 94%;
 						height: 100%;
 					}
 				}
@@ -258,37 +289,46 @@ html, body, #root {
 				.terminal {
 					width: 100%;
 					height: 20%;
+					padding: 1rem;
 					
 					.terminal-tabs {
 						display: flex;
+						height: 1rem;
+						gap: 1rem;
+						margin-bottom: 1rem;
+
+						.terminal-menus {
+							display: flex;
+							margin-left: auto;
+							gap: 1rem;
+						}
 					}
 				}
 			}
 		}
 
 		.status-bar-wrapper {
-			height: 5%;
+			height: 2rem;
+			padding-top: 0.5rem;
+			padding-bottom: 0.5rem;
 			width: 100%;
 			display: flex;
 
-			.remote-window {
-				height: 100%;
-				width: 2%;
+			img {
+				padding-right: 0.5rem;
+				padding-left: 0.5rem;
 			}
 
 			.status-bar {
 				display: flex;
-				width: 98%;
+				width: 100%;
+				padding-left: 0.5rem;
 				height: 100%;
 				padding-right: 2%;
 
-				.status-left {
-					display: flex;
-					gap: 0.5rem;
-				}
 				.status-right {
 					display: flex;
-					gap: 0.5rem;
+					gap: 1rem;
 					margin-left: auto;
 				}
 			}
