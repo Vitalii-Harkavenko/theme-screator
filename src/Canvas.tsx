@@ -1,14 +1,14 @@
-import { TokensContext } from "./TokensContext";
+import { TokensContext, Token } from "./TokensContext";
 import { useContext } from "react"; 
 import * as svgs from "./assets/svgs";
-import * as words from "./syntaxEls";
+import { Keywords, Operators, Fns_classes, Strings, Parameters, Attributes_props, Variables } from "./SyntaxBoilerplates";
 
 export const Canvas = () => {
 
-    const {syntaxTokens, setSyntaxTokens} = useContext(TokensContext);
+    const {syntaxTokens} = useContext(TokensContext);
 
     const colors: {[key : string]: any} = {};
-    syntaxTokens.forEach(token => {
+    syntaxTokens.forEach((token: Token) => {
         const { class: tokenClass, settings: { foreground } } = token;
         colors[tokenClass] = {color: foreground};
     });
@@ -134,22 +134,22 @@ export const Canvas = () => {
                             { gutterNumbers.map(i => <p>{i}</p>) }
                         </div>
                         <div className="editor">
-                            <p style={colors.punctuation}><span style={colors.keywords}>import</span> &#123; <span style={colors.fns_classes}>useState</span> &#125; <span style={colors.keywords}>from</span> <span style={colors.strings}>"react"</span>;</p>
-                            <p style={colors.punctuation}><span style={colors.keywords}>import</span> <span style={colors.strings}>"./index.scss"</span>;</p>
+                            <p style={colors.punctuation}><Keywords word="import"/> &#123; <Fns_classes word="useState"/> &#125; <Keywords word="from"/> <Strings word="react"/>;</p>
+                            <p style={colors.punctuation}><Keywords word="import"/> <Strings word="./index.scss"/>;</p>
                             <p className="whitespace"></p>
                             <p style={colors.comments}>// A very important comment here so that you can see how it would look in the editor</p>
                             <p className="whitespace"></p>
-                            <p style={colors.punctuation}> <span style={colors.keywords}>export</span> <span style={colors.keywords}>const</span> <span style={colors.fns_classes}>App</span> <span style={colors.operators}>=</span> () <span style={colors.operators}>=&gt;</span> &#123;</p>
+                            <p style={colors.punctuation}> <Keywords word="export"/> <Keywords word="const"/> <Fns_classes word="App"/> <Operators word="="/> () <Operators word="=&gt;"/> &#123;</p>
                             <p className="whitespace"></p>
-                            <p style={colors.punctuation}><span style={colors.keywords}>type</span> <span style={colors.ts_types}>Tokens</span> <span style={colors.operators}>=</span> &#123;</p>
+                            <p style={colors.punctuation}><Keywords word="type"/> <span style={colors.ts_types}>Tokens</span> <Operators word="="/> &#123;</p>
                             <div className="tab-space">
-                                <p style={colors.punctuation}><span style={colors.attributes_props}>class</span><span style={colors.operators}>:</span> <span style={colors.strings}>string</span>;</p>
-                                <p style={colors.punctuation}><span style={colors.attributes_props}>name</span><span style={colors.operators}>:</span> <span style={colors.strings}>string</span>;</p>
-                                <p style={colors.punctuation}><span style={colors.attributes_props}>foreground</span><span style={colors.operators}>:</span> <span style={colors.strings}>string[]</span>;</p>
+                                <p style={colors.punctuation}><Attributes_props word="class"/><Operators word=":"/> <Strings word="string"/>;</p>
+                                <p style={colors.punctuation}><Attributes_props word="name"/><Operators word=":"/> <Strings word="string"/>;</p>
+                                <p style={colors.punctuation}><Attributes_props word="foreground"/><Operators word=":"/> <Strings word="string[]"/>;</p>
                             </div>
                             <p style={colors.punctuation}>&#125;;</p>
-                            <p><span style={colors.keywords}>const</span> [<span style={colors.variables}>syntaxTokens</span>, <span style={colors.variables}>setSyntaxTokens</span>] <span style={colors.operators}>=</span> <span style={colors.fns_classes}>useState</span>&lt;<span style={colors.ts_types}>Tokens</span>&gt;(<span style={colors.attributes_props}>tokens.syntax</span>);</p>
-                            <p><words._Const color={colors.keywords}/> <span>handleTokenUpdate</span> = (e: React.ChangeEvent&lt;HTMLInputElement&gt;, index: number) =&gt; &#123;</p>
+                            <p><Keywords word="const"/> <Fns_classes word="handleTokenUpdate"/> <Operators word="="/> (<Parameters word="e"/><Operators word=":"/> <Attributes_props word="React"/>.<Attributes_props word="ChangeEvent"/>&lt;<Attributes_props word="HTMLInputElement"/>&gt;, <Attributes_props word="index"/><Operators word=":"/> <span style={colors.ts_types}>number</span>) <Operators word="=&gt;"/> &#123;</p>
+                            <p><Keywords word="const"/> [<Variables word="syntaxTokens"/>, <Variables word="setSyntaxTokens"/>] <Operators word="="/> <Fns_classes word="useState"/>&lt;<span style={colors.ts_types}>Tokens</span>&gt;(<Attributes_props word="tokens"/>.<Attributes_props word="syntax"/>);</p>
                         </div>
                     </div>
                     <div className="terminal">
