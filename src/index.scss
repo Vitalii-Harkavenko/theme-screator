@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&family=Montserrat:wght@300;400;500&display=swap');
 
 $bg : #0c0a11;
 $main : #1d1b23;
@@ -107,6 +108,7 @@ html, body, #root {
 					width: 6rem;
 					background-color: transparent;
 					color: $text;
+					outline: none;
 				}
 				p {
 					height: fit-content;
@@ -123,6 +125,7 @@ html, body, #root {
 		background-color: $main;
 		font-size: 0.5rem;
 		color: $text;
+		font-family: "Fragment Mono";
 
 		.menu-bar {
 			height: 4%;
@@ -274,15 +277,21 @@ html, body, #root {
 						margin-left: 1rem;
 					}
 					.gutter {
-						width: 6%;
-						height: 100%;
-						display: flex;
-						flex-direction: column;
-						align-items: center;
+						padding-left: 1.5rem;
+						padding-right: 1.5rem;
+						display: grid;
+						grid-template-columns: 1rem;
+						grid-template-rows: repeat(auto-fill, 1rem);
+						text-align: right;
+						overflow: hidden;
+
 					}
 					.editor {
 						width: 94%;
 						height: 100%;
+						p {
+							height: 1rem;
+						}
 					}
 				}
 
@@ -344,4 +353,19 @@ html, body, #root {
 .space {
 	width: 1rem;
 	height: 1rem;
+}
+.punctuation {
+	color: var(--punctuation);
+}
+.fns-classes {
+	color: var(--fns-classes);
+}
+.keywords {
+	color: var(--keywords);
+}
+.strings {
+	color: var(--strings);
+}
+.operators {
+	color: var(--operators);
 }
