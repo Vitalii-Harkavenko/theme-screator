@@ -1,26 +1,21 @@
 import React, { useState } from "react";
 import tokens from "./assets/tokens.json";
 
-export const TokensContext = React.createContext(null);
+type Tokens = {
+    class: string;
+    name: string;
+    settings: {
+        foreground: string;
+        fontStyle?: string;
+    };
+}[];
 
-export const TokensProvider = ({ children }) => {
+const defaultTokens: Tokens = [];
+export const TokensContext = React.createContext<Tokens>(defaultTokens);
 
-	export type Tokens = {
-        class: string;
-        name: string;
-        settings: {
-            foreground: string;
-            fontStyle?: string;
-        };
-    }[];
+export const TokensProvider: React.FC<React.FC> = ({ children }) => {
 
 	const [syntaxTokens, setSyntaxTokens] = useState<Tokens>(tokens.syntax);
-
-	const colors: {[key : string]: any} = {};
-    syntaxTokens.forEach(token => {
-        const { class: tokenClass, settings: { foreground } } = token;
-        colors[tokenClass] = {color: foreground};
-    });
 
 	return (
 		<TokensContext.Provider value={{syntaxTokens, setSyntaxTokens}}>

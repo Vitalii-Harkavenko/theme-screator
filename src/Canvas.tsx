@@ -6,6 +6,12 @@ import * as words from "./syntaxEls";
 export const Canvas = () => {
 
     const {syntaxTokens, setSyntaxTokens} = useContext(TokensContext);
+
+    const colors: {[key : string]: any} = {};
+    syntaxTokens.forEach(token => {
+        const { class: tokenClass, settings: { foreground } } = token;
+        colors[tokenClass] = {color: foreground};
+    });
     
     const gutterNumbers = [];
     for (let i = 0; i < 30; i++) {
