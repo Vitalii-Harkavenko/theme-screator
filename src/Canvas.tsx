@@ -5,7 +5,7 @@ import { Keywords, Operators, Fns_classes_consts, Strings, Parameters, Atts_prop
 
 export const Canvas = () => {
 
-    const {colors} = useContext(TokensContext);
+    const {colors, interfaceTokens} = useContext(TokensContext);
     
     const gutterNumbers = [];
     for (let i = 0; i < 30; i++) {

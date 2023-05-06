@@ -3,7 +3,7 @@ import { TokensContext, Token} from "./TokensContext.tsx";
 import * as svgs from "./assets/svgs";
 
 export const StylingSection = () => {
-	
+
 	type TokensState = {syntaxTokens: Token[], setSyntaxTokens: any};
 	const [searchValue, setSearchValue] = useState<string>('');
 	const {syntaxTokens, setSyntaxTokens} = useContext<TokensState>(TokensContext);
