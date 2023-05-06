@@ -1,101 +1,51 @@
-import { TokensContext, Token } from "./TokensContext";
+import { TokensContext } from "./TokensContext";
 import { useContext } from "react"; 
 
 export const Keywords: React.FC<{word: string}> = ({ word }) => {
-
-	const {syntaxTokens} = useContext(TokensContext);
-
-    let tokenColor: string = "";
-    syntaxTokens.forEach((token: Token) => {
-        if (token.class === "keywords")
-			tokenColor = token.settings.foreground;
-    });
-
+	const {colors} = useContext(TokensContext);
 	return (
-		<span style={{color: tokenColor}}>{word}</span>
+		<span style={colors.keywords}>{word}</span>
 	)
 }
 export const Operators: React.FC<{word: string}> = ({ word }) => {
-
-	const {syntaxTokens} = useContext(TokensContext);
-
-    let tokenColor: string = "";
-    syntaxTokens.forEach((token: Token) => {
-        if (token.class === "operators")
-			tokenColor = token.settings.foreground;
-    });
-
+	const {colors} = useContext(TokensContext);
 	return (
-		<span style={{color: tokenColor}}>{word}</span>
+		<span style={colors.operators}>{word}</span>
 	)
 }
-export const Fns_classes: React.FC<{word: string}> = ({ word }) => {
-
-	const {syntaxTokens} = useContext(TokensContext);
-
-    let tokenColor: string = "";
-    syntaxTokens.forEach((token: Token) => {
-        if (token.class === "fns_classes")
-			tokenColor = token.settings.foreground;
-    });
-
+export const Fns_classes_consts: React.FC<{word: string}> = ({ word }) => {
+	const {colors} = useContext(TokensContext);
 	return (
-		<span style={{color: tokenColor}}>{word}</span>
+		<span style={colors.fns_classes_consts}>{word}</span>
 	)
 }
 export const Strings: React.FC<{word: string}> = ({ word }) => {
-
-	const {syntaxTokens} = useContext(TokensContext);
-
-    let tokenColor: string = "";
-    syntaxTokens.forEach((token: Token) => {
-        if (token.class === "strings")
-			tokenColor = token.settings.foreground;
-    });
-
+	const {colors} = useContext(TokensContext);
 	return (
-		<span style={{color: tokenColor}}>"{word}"</span>
+		<span style={colors.strings}>"{word}"</span>
 	)
 }
 export const Parameters: React.FC<{word: string}> = ({ word }) => {
-
-	const {syntaxTokens} = useContext(TokensContext);
-
-    let tokenColor: string = "";
-    syntaxTokens.forEach((token: Token) => {
-        if (token.class === "parameters")
-			tokenColor = token.settings.foreground;
-    });
-
+	const {colors} = useContext(TokensContext);
 	return (
-		<span style={{color: tokenColor}}>{word}</span>
+		<span style={colors.parameters}>{word}</span>
 	)
 }
-export const Attributes_props: React.FC<{word: string}> = ({ word }) => {
-
-	const {syntaxTokens} = useContext(TokensContext);
-
-    let tokenColor: string = "";
-    syntaxTokens.forEach((token: Token) => {
-        if (token.class === "attributes_props")
-			tokenColor = token.settings.foreground;
-    });
-
+export const Atts_props_vars: React.FC<{word: string}> = ({ word }) => {
+	const {colors} = useContext(TokensContext);
 	return (
-		<span style={{color: tokenColor}}>{word}</span>
+		<span style={colors.atts_props_vars}>{word}</span>
 	)
 }
-export const Variables: React.FC<{word: string}> = ({ word }) => {
-
-	const {syntaxTokens} = useContext(TokensContext);
-
-    let tokenColor: string = "";
-    syntaxTokens.forEach((token: Token) => {
-        if (token.class === "variables")
-			tokenColor = token.settings.foreground;
-    });
-
+export const Ts_types: React.FC<{word: string}> = ({ word }) => {
+	const {colors} = useContext(TokensContext);
 	return (
-		<span style={{color: tokenColor}}>{word}</span>
+		<span style={colors.ts_types}>{word}</span>
+	)
+}
+export const Tags: React.FC<{word: string}> = ({ word }) => {
+	const {colors} = useContext(TokensContext);
+	return (
+		<span style={colors.tags}>{word}</span>
 	)
 }

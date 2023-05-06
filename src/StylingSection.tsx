@@ -4,9 +4,9 @@ import * as svgs from "./assets/svgs";
 
 export const StylingSection = () => {
 	
-	type Tokens = {syntaxTokens: Token[], setSyntaxTokens: any};
+	type TokensState = {syntaxTokens: Token[], setSyntaxTokens: any};
 	const [searchValue, setSearchValue] = useState<string>('');
-	const {syntaxTokens, setSyntaxTokens} = useContext<Tokens>(TokensContext);
+	const {syntaxTokens, setSyntaxTokens} = useContext<TokensState>(TokensContext);
 
     const handleTokenUpdate = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const tokens = [...syntaxTokens];

@@ -21,9 +21,14 @@ export const TokensContext = React.createContext<any>(undefined);
 export const TokensProvider: React.FC<ProviderProps> = ({ children }) => {
 
 	const [syntaxTokens, setSyntaxTokens] = useState<Tokens>(tokens.syntax);
+	const colors: {[key : string]: any} = {};
+    syntaxTokens.forEach((token: Token) => {
+        const { class: tokenClass, settings: { foreground } } = token;
+        colors[tokenClass] = {color: foreground};
+    });
 
 	return (
-		<TokensContext.Provider  value={{ syntaxTokens, setSyntaxTokens }}>
+		<TokensContext.Provider  value={{ syntaxTokens, setSyntaxTokens, colors }}>
 			{ children }
 		</TokensContext.Provider>
 	)

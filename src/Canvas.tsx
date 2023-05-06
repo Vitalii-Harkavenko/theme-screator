@@ -1,17 +1,11 @@
-import { TokensContext, Token } from "./TokensContext";
+import { TokensContext } from "./TokensContext";
 import { useContext } from "react"; 
 import * as svgs from "./assets/svgs";
-import { Keywords, Operators, Fns_classes, Strings, Parameters, Attributes_props, Variables } from "./SyntaxBoilerplates";
+import { Keywords, Operators, Fns_classes_consts, Strings, Parameters, Atts_props_vars, Ts_types, Tags } from "./SyntaxBoilerplates";
 
 export const Canvas = () => {
 
-    const {syntaxTokens} = useContext(TokensContext);
-
-    const colors: {[key : string]: any} = {};
-    syntaxTokens.forEach((token: Token) => {
-        const { class: tokenClass, settings: { foreground } } = token;
-        colors[tokenClass] = {color: foreground};
-    });
+    const {colors} = useContext(TokensContext);
     
     const gutterNumbers = [];
     for (let i = 0; i < 30; i++) {
@@ -111,8 +105,12 @@ export const Canvas = () => {
                 <div className="editor-container">
                     <div className="tabs">
                         <div className="tab">
-                        <img src={svgs.scss}></img>
+                            <img src={svgs.scss}></img>
                             <p>index.scss</p>
+                        </div>
+                        <div className="tab">
+                            <img src={svgs.react}></img>
+                            <p>StylingSection.tsx</p>
                         </div>
                         <div className="tab">
                             <img src={svgs.react}></img>
@@ -134,22 +132,43 @@ export const Canvas = () => {
                             { gutterNumbers.map(i => <p>{i}</p>) }
                         </div>
                         <div className="editor">
-                            <p style={colors.punctuation}><Keywords word="import"/> &#123; <Fns_classes word="useState"/> &#125; <Keywords word="from"/> <Strings word="react"/>;</p>
-                            <p style={colors.punctuation}><Keywords word="import"/> <Strings word="./index.scss"/>;</p>
+                            <p style={colors.punctuation}><Keywords word="import"/> <Fns_classes_consts word="React"/>, &#123; <Fns_classes_consts word="useState"/>, <Fns_classes_consts word="useContext"/> &#125; <Keywords word="from"/> <Strings word="react"/>;</p>
+                            <p style={colors.punctuation}><Keywords word="import"/> &#123; <Fns_classes_consts word="TokensContext"/> &#125; <Keywords word="from"/> <Strings word="./TokensContext.tsx"/>;</p>
+                            <p style={colors.punctuation}><Keywords word="import"/> <Fns_classes_consts word="*"/> <Keywords word="as"/> <Fns_classes_consts word="svgs"/> <Keywords word="from"/> <Strings word="./assets/svgs"/>;</p>
                             <p className="whitespace"></p>
                             <p style={colors.comments}>// A very important comment here so that you can see how it would look in the editor</p>
                             <p className="whitespace"></p>
-                            <p style={colors.punctuation}> <Keywords word="export"/> <Keywords word="const"/> <Fns_classes word="App"/> <Operators word="="/> () <Operators word="=&gt;"/> &#123;</p>
-                            <p className="whitespace"></p>
-                            <p style={colors.punctuation}><Keywords word="type"/> <span style={colors.ts_types}>Tokens</span> <Operators word="="/> &#123;</p>
+                            <p style={colors.punctuation}> <Keywords word="export"/> <Keywords word="const"/> <Fns_classes_consts word="StylingSection"/> <Operators word="="/> () <Operators word="=&gt;"/> &#123;</p>
+                            <p style={colors.punctuation}><Keywords word="type"/> <Ts_types word="Tokens"/><Operators word="="/> &#123;</p>
                             <div className="tab-space">
-                                <p style={colors.punctuation}><Attributes_props word="class"/><Operators word=":"/> <Strings word="string"/>;</p>
-                                <p style={colors.punctuation}><Attributes_props word="name"/><Operators word=":"/> <Strings word="string"/>;</p>
-                                <p style={colors.punctuation}><Attributes_props word="foreground"/><Operators word=":"/> <Strings word="string[]"/>;</p>
+                                <p style={colors.punctuation}><Atts_props_vars word="class"/><Operators word=":"/> <Strings word="string"/>;</p>
+                                <p style={colors.punctuation}><Atts_props_vars word="name"/><Operators word=":"/> <Strings word="string"/>;</p>
+                                <p style={colors.punctuation}><Atts_props_vars word="foreground"/><Operators word=":"/> <Strings word="string[]"/>;</p>
                             </div>
                             <p style={colors.punctuation}>&#125;;</p>
-                            <p><Keywords word="const"/> <Fns_classes word="handleTokenUpdate"/> <Operators word="="/> (<Parameters word="e"/><Operators word=":"/> <Attributes_props word="React"/>.<Attributes_props word="ChangeEvent"/>&lt;<Attributes_props word="HTMLInputElement"/>&gt;, <Attributes_props word="index"/><Operators word=":"/> <span style={colors.ts_types}>number</span>) <Operators word="=&gt;"/> &#123;</p>
-                            <p><Keywords word="const"/> [<Variables word="syntaxTokens"/>, <Variables word="setSyntaxTokens"/>] <Operators word="="/> <Fns_classes word="useState"/>&lt;<span style={colors.ts_types}>Tokens</span>&gt;(<Attributes_props word="tokens"/>.<Attributes_props word="syntax"/>);</p>
+                            <p style={colors.punctuation}><Keywords word="type"/> <Ts_types word="TokensState"/> <Operators word="="/> &#123; <Atts_props_vars word="syntaxTokens"/><Operators word=":"/> <Ts_types word="Tokens"/>, <Atts_props_vars word="setSyntaxTokens"/><Operators word=":"/> <Ts_types word="any"/>&#125;;</p>
+                            <p style={colors.punctuation}><Keywords word="const"/> [<Fns_classes_consts word="searchValue"/>, <Fns_classes_consts word="setSearchValue"/>] <Operators word="="/> <Fns_classes_consts word="useState"/>&lt;<Ts_types word="string"/>&gt;(<Strings word=""/>);</p>
+                            <p style={colors.punctuation}><Keywords word="const"/> &#123;<Fns_classes_consts word="syntaxTokens"/>, <Fns_classes_consts word="setSyntaxTokens"/>&#125; <Operators word="="/> <Fns_classes_consts word="useContext"/>&lt;<Ts_types word="TokensState"/>&gt;(<Fns_classes_consts word="TokensContext"/>);</p>
+                            <p className="whitespace"></p>
+                            <p style={colors.punctuation}><Keywords word="const"/> <Fns_classes_consts word="handleTokenUpdate"/> <Operators word="="/> (<Parameters word="e"/><Operators word=":"/> <Ts_types word="React"/>.<Ts_types word="ChangeEvent"/>&lt;<Ts_types word="HTMLInputElement"/>&gt;, <Atts_props_vars word="index"/><Operators word=":"/> <Ts_types word="number"/>) <Operators word="=&gt;"/> &#123;</p>
+                            <div className="tab-space">
+                                <p style={colors.punctuation}><Keywords word="const"/> <Fns_classes_consts word="tokens"/> <Operators word="="/> [<Operators word="..."/><Fns_classes_consts word="syntaxTokens"/>];</p>
+                                <p style={colors.punctuation}><Fns_classes_consts word="tokens"/>[<Fns_classes_consts word="index"/>].<Atts_props_vars word="settings"/>.<Atts_props_vars word="foreground"/> <Operators word="="/> <Atts_props_vars word="e"/>.<Atts_props_vars word="target"/>.<Atts_props_vars word="value"/>;</p>
+                            </div>
+                            <p style={colors.punctuation}><Keywords word="return"/> (</p>
+                            <div className="tab-space">
+                                <p style={colors.punctuation}>&lt;<Tags word="div"/> <Atts_props_vars word="className"/><Operators word="="/><Strings word="styles-container"/>&gt;</p>
+                                <div className="tab-space">
+                                    <p style={colors.punctuation}>&lt;<Tags word="div"/> <Atts_props_vars word="className"/><Operators word="="/><Strings word="search-container"/>&gt;</p>
+                                    <div className="tab-space">
+                                        <p style={colors.punctuation}>&lt;<Tags word="div"/> <Atts_props_vars word="className"/><Operators word="="/><Strings word="search-svg"/>&gt;</p>
+                                        <div className="tab-space">
+                                            <p style={colors.punctuation}>&lt;<Tags word="img"/> <Atts_props_vars word="src"/><Operators word="="/>&#123;<Atts_props_vars word="svgs"/>.<Atts_props_vars word="search"/>&#125; <Atts_props_vars word="alt"/><Operators word="="/><Strings word="search"/>&gt;&lt;/<Tags word="img"/>&gt;</p>
+                                        </div>
+                                        <p style={colors.punctuation}>&lt;/<Tags word="div"/>&gt;</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="terminal">
