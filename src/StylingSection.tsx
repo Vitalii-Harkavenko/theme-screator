@@ -1,12 +1,12 @@
 import React, { useState, useContext } from 'react'
-import { TokensContext, Token} from "./TokensContext.tsx";
+import { TokensContext, Token, InterfaceTokens} from "./TokensContext.tsx";
 import * as svgs from "./assets/svgs";
 
 export const StylingSection = () => {
 
-	type TokensState = {syntaxTokens: Token[], setSyntaxTokens: any};
 	const [searchValue, setSearchValue] = useState<string>('');
-	const {syntaxTokens, setSyntaxTokens} = useContext<TokensState>(TokensContext);
+	const {syntaxTokens, setSyntaxTokens} = useContext(TokensContext);
+	const {interfaceTokens, setInterfaceTokens} = useContext(TokensContext);
 
     const handleTokenUpdate = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const tokens = [...syntaxTokens];

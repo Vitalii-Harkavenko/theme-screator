@@ -10,6 +10,12 @@ export type Token = {
         fontStyle?: string;
     };
 };
+export type InterfaceTokens = {
+	[key: string]: {
+	  scope: string[] | string;
+	  color: string;
+	} | string;
+}
 type Tokens = Token[];
 
 type ProviderProps = {
@@ -27,7 +33,7 @@ export const TokensProvider: React.FC<ProviderProps> = ({ children }) => {
         colors[tokenClass] = {color: foreground};
     });
 
-	const [interfaceTokens, setInterfaceTokens] = useState<{[key: string]: string}>(tokens.interface);
+	const [interfaceTokens, setInterfaceTokens] = useState<InterfaceTokens>(tokens.interface);
 
 	return (
 		<TokensContext.Provider  value={{ syntaxTokens, setSyntaxTokens, interfaceTokens, setInterfaceTokens, colors }}>
