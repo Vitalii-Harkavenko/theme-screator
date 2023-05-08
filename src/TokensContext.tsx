@@ -4,18 +4,13 @@ import tokens from "./assets/tokens.json";
 export type Token = {
     class: string;
     name: string;
-	scope: string[];
-    settings: {
+	scope: string[] | string;
+	background?: string;
+    settings?: {
         foreground: string;
         fontStyle?: string;
     };
 };
-export type InterfaceTokens = {
-	[key: string]: {
-	  scope: string[] | string;
-	  color: string;
-	} | string;
-}
 type Tokens = Token[];
 
 type ProviderProps = {
@@ -33,7 +28,7 @@ export const TokensProvider: React.FC<ProviderProps> = ({ children }) => {
         colors[tokenClass] = {color: foreground};
     });
 
-	const [interfaceTokens, setInterfaceTokens] = useState<InterfaceTokens>(tokens.interface);
+	const [interfaceTokens, setInterfaceTokens] = useState<Tokens>(tokens.interface);
 
 	return (
 		<TokensContext.Provider  value={{ syntaxTokens, setSyntaxTokens, interfaceTokens, setInterfaceTokens, colors }}>
