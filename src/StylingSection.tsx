@@ -10,50 +10,66 @@ export const StylingSection = () => {
 	const {syntaxTokens, setSyntaxTokens} = useContext<SyntaxState>(TokensContext);
 	const {interfaceTokens, setInterfaceTokens} = useContext<InterfaceState>(TokensContext);
 
-    const handleTokenUpdate = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
-        const tokens = [...syntaxTokens];
-        tokens[index].settings.foreground = e.target.value;
-        setSyntaxTokens(tokens);
+    const handleTokenUpdate = (e: React.ChangeEvent<HTMLInputElement>, index: number, tokenType: string) => {
+		if (tokenType === "syntax") {
+			const tokens = [...syntaxTokens];
+			tokens[index].settings.foreground = e.target.value;
+			setSyntaxTokens(tokens);
+		} else {
+			const tokens = [...interfaceTokens];
+			tokens[index].settings.background = e.target.value;
+			setInterfaceTokens(tokens);
+		}
     }
 
 	return (
 		<div className="styles-container">
-    	    <div className="search-container">
-    	        <div className="search-svg">
-    	            <img src={svgs.search} alt="search"></img>
-    	        </div>
-    	        <input
-    	            className="search-bar"
-    	            type="text"
-    	            placeholder="Find a section/text type"
-    	            value={searchValue}
-    	            onChange={(e) => setSearchValue(e.target.value)}
-    	        ></input>
-    	    </div>
-    	    <div className="styles-picker">
-				<div className="">
-					<div></div>
-					<div></div>
-				</div>
-				<div>
+			<div className="tab-switcher">
+				<div className="syntax-colors-tab">Syntax colors</div>
+				<div className="interface-colors-tab">Interface colors</div>
+			</div>
+			<div className="color-tokens">
+				<div className="syntax">
 					{
 						syntaxTokens.map((el, index) => {
 							return (
 								<div className="styles-wrapper" key={index}>
-									<div className="color-thumb" style={{backgroundColor : el.settings.foreground}}></div>
-									<input
-										type="text"
-										placeholder="Enter a color"
-										value={el.settings.foreground}
-										onChange={e => handleTokenUpdate(e, index) }
-									></input>
-									<p>{el.name}</p>
+									<div className="thumb" style={{backgroundColor : el.settings.foreground}}></div>
+									<div className="text">
+										<input
+											type="text"
+											placeholder="Enter a color"
+											value={el.settings.foreground}
+											onChange={e => handleTokenUpdate(e, index, "syntax") }
+										></input>
+										<p>{el.name}</p>
+									</div>
 								</div>
 							)
 						})
 					}
 				</div>
-    	    </div>
+				<div className="interface hidden">
+					{
+						interfaceTokens.map((el, index) => {
+							return (
+								<div className="styles-wrapper" key={index}>
+									<div className="thumb" style={{backgroundColor : el.settings.background}}></div>
+									<div className="text">
+										<input
+											type="text"
+											placeholder="Enter a color"
+											value={el.settings.background}
+											onChange={e => handleTokenUpdate(e, index, "interface") }
+										></input>
+										<p>{el.name}</p>
+									</div>
+								</div>
+							)
+						})
+					}
+				</div>
+			</div>
     	</div>
 	)
 }

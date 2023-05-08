@@ -5,9 +5,9 @@ export type Token = {
     class: string;
     name: string;
 	scope: string[] | string;
-	background?: string;
-    settings?: {
-        foreground: string;
+    settings: {
+        foreground?: string;
+		background?: string;
         fontStyle?: string;
     };
 };

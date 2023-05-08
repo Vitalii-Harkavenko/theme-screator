@@ -23,12 +23,38 @@ input::-moz-placeholder {
 input:-ms-input-placeholder {
 	@include placeholder-styles;
 }
-.styles-container::-webkit-scrollbar {
-	display: none;
+.color-tokens::-webkit-scrollbar {
+	width: 0.5rem;
+	background-color: transparent;
 }
-.styles-container {
+.color-tokens::-webkit-scrollbar-thumb {
+	background-color: rgb(112, 112, 112);
+	border-bottom: 0.5rem solid $main;
+	border-top: 0.5rem solid $main;
+}
+/* For Firefox */
+.color-tokens {
+	scrollbar-width: thin;
+	scrollbar-color: rgb(112, 112, 112) $main;
+}
+  
+.color-tokens::-moz-scrollbar-thumb {
+	background-color: rgb(112, 112, 112);
+	border-bottom: 0.5rem solid $main;
+	border-top: 0.5rem solid $main;
+}
+  
+/* For Edge and IE */
+.color-tokens {
 	-ms-overflow-style: none;
-	scrollbar-width: none;
+	scrollbar-width: thin;
+	scrollbar-color: rgb(112, 112, 112) $main;
+}
+  
+.color-tokens::-ms-scrollbar-thumb {
+	background-color: rgb(112, 112, 112);
+	border-bottom: 0.5rem solid $main;
+	border-top: 0.5rem solid $main;
 }
 * {
 	box-sizing: border-box;
@@ -57,62 +83,62 @@ html, body, #root {
 		height: 100%;
 		background-color: $main;
 		color: $text;
-		overflow-y: scroll;
 		filter: drop-shadow(5px 0 5px rgba(0, 0, 0, 0.5));
 		
-		.search-container {
-			position: relative;
+		.tab-switcher {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			text-align: center;
 			width: 100%;
-			height: 2rem;
-			margin-top: 1rem;
-			margin-bottom: 2rem;
-
-			.search-svg {
-				position: absolute;
-				left: 0.5rem;
-				top: 50%;
-				transform: translateY(-50%);
-				width: 1.5rem;
-			};
-
-			.search-bar {
+			height: 10vh;
+			> * {
 				width: 100%;
 				height: 100%;
-				background-color: transparent;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
 			}
 		}
-		.styles-picker {
-			display: flex;
-			flex-direction: column;
-			height: calc(100% - 2rem);
+		.color-tokens {		
+			height: 90vh;
 			width: 100%;
-			height: 100%;
-			gap: 2rem;
-
-			.styles-wrapper {
-				display: grid;
-				grid-template-columns: 3rem 6rem 1fr;
+			overflow-y: scroll;
+			
+			.hidden {
+				display: none;
+			}
+			> * {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
 				gap: 2rem;
-				width: 95%;
-				margin-left: auto;
-				margin-right: auto;
-				height: 3rem;
+				padding-bottom: 2rem;
 
-				.color-thumb {
-					width: 3rem;
+				.styles-wrapper {
+					display: grid;
+					grid-template-columns: 3rem 1fr;
+					grid-gap: 1rem;
+					width: 100%;
 					height: 3rem;
-					border-radius: 0.5rem;
-				}
-
-				input {
-					width: 6rem;
-					background-color: transparent;
-					color: $text;
-					outline: none;
-				}
-				p {
-					height: fit-content;
-					align-self: center;
+	
+					.thumb {
+						width: 100%;
+						height: 100%;
+						border-radius: 0.5rem;
+					}
+					.text {
+						display: flex;
+						flex-direction: column;
+						justify-content: space-between;
+						input {
+							background-color: transparent;
+							color: $text;
+							outline: none;
+						}
+						p {
+							height: fit-content;
+						}
+					}
 				}
 			}
 		}
