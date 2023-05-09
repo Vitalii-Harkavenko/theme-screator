@@ -1,4 +1,4 @@
-import React, { useContext, useRef} from 'react'
+import React, { useContext, useRef, useEffect } from 'react'
 import { TokensContext, Token} from "./TokensContext.tsx";
 
 export const StylingSection = () => {
@@ -27,6 +27,12 @@ export const StylingSection = () => {
 			setInterfaceFgTokens(tokens);
 		}
     };
+	useEffect(() => {
+		if (interfaceFgTokens[0].settings.foreground && interfaceFgTokens[1].settings.foreground) {
+			document.documentElement.style.setProperty('--text-active', interfaceFgTokens[0].settings.foreground);
+			document.documentElement.style.setProperty('--text-inactive', interfaceFgTokens[1].settings.foreground);
+		};
+	}, [interfaceFgTokens]);
 
 	const syntax_tab = useRef<HTMLDivElement>(null);
 	const syntax_colors = useRef<HTMLDivElement>(null);
@@ -37,8 +43,7 @@ export const StylingSection = () => {
 		interface_tab.current?.classList.toggle("opened");
 		syntax_colors.current?.classList.toggle("hidden");
 		interface_colors.current?.classList.toggle("hidden");
-	}
-
+	};
 
 	return (
 		<div className="styles-container">

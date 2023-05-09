@@ -1,5 +1,6 @@
 import { TokensContext } from "./TokensContext";
 import { useContext } from "react"; 
+import { Svgs } from "./Svgs"
 import * as svgs from "./assets/svgs";
 import { Keywords, Operators, Fns_classes_consts, Strings, Parameters, Atts_props_vars, Ts_types, Tags } from "./SyntaxBoilerplates";
 
@@ -14,7 +15,7 @@ export const Canvas = () => {
 
 	return (
 		<div className="canvas" style={interfaceFgColors.text}>
-            <div className="menu-bar">
+            <div className="menu-bar" style={interfaceColors.titleBarBg}>
                 <div className="menus">
                     <img src={svgs.vscode}></img>
                     <p>File</p>
@@ -28,110 +29,112 @@ export const Canvas = () => {
                 </div>
                 <p className="menu-middle">App.tsx - theme-creator - Visual Studio Code</p>
                 <div className="window-modes">
-                    <img src={svgs.dash}></img>
-                    <img src={svgs.collapse}></img>
-                    <img src={svgs.close}></img>
+                    <Svgs svg={svgs.dash} _class={"svg-active"}/>
+                    <Svgs svg={svgs.collapse} _class={"svg-active"}/>
+                    <Svgs svg={svgs.close} _class={"svg-active"}/>
                 </div>
             </div>
             <div className="main-section">
                 <div className="sidebar-container">
-                    <div className="activity-bar">
-                        <img src={svgs.files}></img>
-                        <img src={svgs.search}></img>
-                        <img src={svgs.branch} style={{rotate : "180deg", transform : "scaleX(-1)"}}></img>
-                        <img src={svgs.debug}></img>
-                        <img src={svgs.extensions}></img>
+                    <div className="activity-bar" style={interfaceColors.activityBarBg}>
+                        <Svgs svg={svgs.files} _class={"svg-active"}/>
+                        <Svgs svg={svgs.search} _class={"svg"}/>
+                        <div style={{rotate : "180deg", transform : "scaleX(-1)"}}>
+                            <Svgs svg={svgs.branch} _class={"svg"}/>
+                        </div>
+                        <Svgs svg={svgs.debug} _class={"svg"}/>
+                        <Svgs svg={svgs.extensions} _class={"svg"}/>
                         <div className="activity-other">
-                            <img src={svgs.account}></img>
-                            <img src={svgs.settings}></img>
+                            <Svgs svg={svgs.account} _class={"svg"}/>
+                            <Svgs svg={svgs.settings} _class={"svg"}/>
                         </div>
                     </div>
-                    <div className="sidebar">
+                    <div className="sidebar" style={interfaceColors.sideBarBg}>
                         <div className="explorer">
                             <p>EXPLORER</p>
-                            <img src={svgs.more}></img>
+                            <Svgs svg={svgs.more} _class={"svg-active"}/>
                         </div>
                         <div className="sidebar-tab">
-                            <img className="down" src={svgs.arrow}></img>
+                            <Svgs svg={svgs.arrow} _class={"svg-active down"}/>
                             <p>THEME-CREATOR</p>
                         </div>
                         <div className="project">
                             <div className="files-wrapper">
-                                <img className="right" src={svgs.arrow}></img>
-                                <img src={svgs.node}></img>
+                                <Svgs svg={svgs.arrow} _class={"svg-active right"}/>
+                                <Svgs svg={svgs.node}/>
                                 <p>node_modules</p>
                             </div>
                             <div className="files-wrapper">
-                                <img className="down" src={svgs.arrow}></img>
-                                <img src={svgs.src}></img>
+                                <Svgs svg={svgs.arrow} _class={"svg-active down"}/>
+                                <Svgs svg={svgs.src}/>
                                 <p>src</p>
                             </div>
                             <div className="down-root">
-                                <img src={svgs.react}></img>
+                                <Svgs svg={svgs.react}/>
                                 <p>App.tsx</p>
-                                <img src={svgs.scss}></img>
+                                <Svgs svg={svgs.scss}/>
                                 <p>index.scss</p>
-                                <img src={svgs.react}></img>
+                                <Svgs svg={svgs.react}/>
                                 <p>main.tsx</p>
                             </div>
                             <div className="files-wrapper">
                                 <div className="space"></div>
-                                <img src={svgs.eslint}></img>
+                                <Svgs svg={svgs.eslint}/>
                                 <p>.eslintrc.cjs</p>
                             </div>
                             <div className="files-wrapper">
                                 <div className="space"></div>
-                                <img src={svgs.html}></img>
+                                <Svgs svg={svgs.html}/>
                                 <p>idnex.html</p>
                             </div>
                             <div className="files-wrapper">
                                 <div className="space"></div>
-                                <img src={svgs.more}></img>
+                                <Svgs svg={svgs.more} _class={"svg-active"}/>
                                 <p>other files</p>
                             </div>
                         </div>
                         <div className="sidebar-bottom">
                             <div className="sidebar-tab">
-                                <img className="right" src={svgs.arrow}></img>
+                                <Svgs svg={svgs.arrow} _class={"svg-active right"}/>
                                 <p>OUTLINE</p>
                             </div>
                             <div className="sidebar-tab">
-                                <img className="right" src={svgs.arrow}></img>
+                                <Svgs svg={svgs.arrow} _class={"svg-active right"}/>
                                 <p>TIMELINE</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="editor-container">
-                    <div className="tabs">
+                    <div className="tabs" style={interfaceColors.titleBarBg}>
                         <div className="tab">
-                            <img src={svgs.scss}></img>
+                            <Svgs svg={svgs.scss}/>
                             <p>index.scss</p>
                         </div>
-                        <div className="tab">
-                            <img src={svgs.react}></img>
+                        <div className="tab" style={interfaceColors.tabActiveBg}>
+                            <Svgs svg={svgs.react}/>
                             <p>StylingSection.tsx</p>
                         </div>
                         <div className="tab">
-                            <img src={svgs.react}></img>
+                            <Svgs svg={svgs.react}/>
                             <p>App.tsx</p>
                         </div>
                         <div className="tab">
-                            <img src={svgs.react}></img>
+                            <Svgs svg={svgs.react}/>
                             <p>main.tsx</p>
                         </div>
                     </div>
-                    <div className="directive">
+                    <div className="directive" style={interfaceColors.breadcrumbBg}>
                         <p>src</p>
-                        <img className="right" src={svgs.arrow}></img>
-                        <img src={svgs.react}></img>
+                        <Svgs svg={svgs.arrow} _class={"svg-active right"}/>
+                        <Svgs svg={svgs.react}/>
                         <p>App.tsx</p>
                     </div>
                     <div className="editor-area">
-                        <div className="gutter">
+                        <div className="gutter" style={interfaceColors.gutterBg}>
                             { gutterNumbers.map(i => <p>{i}</p>) }
                         </div>
-                        <div className="editor">
+                        <div className="editor" style={interfaceColors.editorBg}>
                             <p style={syntaxColors.punctuation}><Keywords word="import"/> <Fns_classes_consts word="React"/>, &#123; <Fns_classes_consts word="useState"/>, <Fns_classes_consts word="useContext"/> &#125; <Keywords word="from"/> <Strings word="react"/>;</p>
                             <p style={syntaxColors.punctuation}><Keywords word="import"/> &#123; <Fns_classes_consts word="TokensContext"/> &#125; <Keywords word="from"/> <Strings word="./TokensContext.tsx"/>;</p>
                             <p style={syntaxColors.punctuation}><Keywords word="import"/> <Fns_classes_consts word="*"/> <Keywords word="as"/> <Fns_classes_consts word="svgs"/> <Keywords word="from"/> <Strings word="./assets/svgs"/>;</p>
@@ -171,28 +174,32 @@ export const Canvas = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="terminal">
+                    <div className="terminal" style={interfaceColors.panelBg}>
                         <div className="terminal-tabs">
                             <p>PROBLEMS</p>
                             <p>TERMINAL</p>
                             <p>OUTPUT</p>
                             <p>DEBUG CONSOLE</p>
                             <div className="terminal-menus">
-                                <div className="terminal-search">node</div>
-                                <img src={svgs.close} style={{rotate : "45deg"}}></img>
-                                <img src={svgs.more}></img>
-                                <img src={svgs.arrow}></img>
-                                <img src={svgs.close}></img>
+                                <p className="terminal-search">node</p>
+                                <div style={{rotate : "45deg"}}>
+                                    <Svgs svg={svgs.close} _class={"svg-active"}/>
+                                </div>
+                                <Svgs svg={svgs.more} _class={"svg-active"}/>
+                                <Svgs svg={svgs.arrow} _class={"svg-active right"}/>
+                                <Svgs svg={svgs.close} _class={"svg-active"}/>
                             </div>
                         </div>
                         <p>C:\Users\ur-project &gt; <span>git</span> <span>something</span></p>
                     </div>
                 </div>
             </div>
-            <div className="status-bar-wrapper">
-                <img src={svgs.remote}></img>
+            <div className="status-bar-wrapper" style={interfaceColors.statusBarBg}>
+                <Svgs svg={svgs.remote} _class={"svg-active remote"}/>
                 <div className="status-bar">
-                    <img src={svgs.branch} style={{rotate : "180deg", transform : "scaleX(-1)"}}></img>
+                    <div className="oneRem" style={{rotate : "180deg", transform : "scaleX(-1)"}}>
+                        <Svgs svg={svgs.branch} _class={"svg-active"}/>
+                    </div>
                     <p>main*</p>
                     <div className="status-right">
                         <p>Some text</p>
