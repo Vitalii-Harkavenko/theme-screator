@@ -22,16 +22,31 @@ export const TokensContext = React.createContext<any>(undefined);
 export const TokensProvider: React.FC<ProviderProps> = ({ children }) => {
 
 	const [syntaxTokens, setSyntaxTokens] = useState<Tokens>(tokens.syntax);
-	const colors: {[key : string]: any} = {};
+	const syntaxColors: {[key : string]: any} = {};
     syntaxTokens.forEach((token: Token) => {
         const { class: tokenClass, settings: { foreground } } = token;
-        colors[tokenClass] = {color: foreground};
+        syntaxColors[tokenClass] = {color: foreground};
     });
 
 	const [interfaceTokens, setInterfaceTokens] = useState<Tokens>(tokens.interface);
+	const interfaceColors: {[key : string]: any} = {};
+    interfaceTokens.forEach((token: Token) => {
+        const { class: tokenClass, settings: { background } } = token;
+        interfaceColors[tokenClass] = {background: background};
+    });
+	const [interfaceFgTokens, setInterfaceFgTokens] = useState<Tokens>(tokens.interfaceText);
+	const interfaceFgColors: {[key : string]: any} = {};
+    interfaceFgTokens.forEach((token: Token) => {
+        const { class: tokenClass, settings: { foreground } } = token;
+        interfaceFgColors[tokenClass] = {color: foreground};
+    });
 
 	return (
-		<TokensContext.Provider  value={{ syntaxTokens, setSyntaxTokens, interfaceTokens, setInterfaceTokens, colors }}>
+		<TokensContext.Provider  value={{ 
+				syntaxTokens, setSyntaxTokens, syntaxColors,
+				interfaceTokens, setInterfaceTokens, interfaceColors,
+				interfaceFgTokens, setInterfaceFgTokens, interfaceFgColors
+			}}>
 			{ children }
 		</TokensContext.Provider>
 	)
