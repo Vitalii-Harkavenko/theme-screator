@@ -40,12 +40,13 @@ export const TokensProvider: React.FC<ProviderProps> = ({ children }) => {
         const { class: tokenClass, settings: { foreground } } = token;
         interfaceFgColors[tokenClass] = {color: foreground};
     });
-
+	const defaults = tokens.defaults
 	return (
 		<TokensContext.Provider  value={{ 
 				syntaxTokens, setSyntaxTokens, syntaxColors,
 				interfaceTokens, setInterfaceTokens, interfaceColors,
-				interfaceFgTokens, setInterfaceFgTokens, interfaceFgColors
+				interfaceFgTokens, setInterfaceFgTokens, interfaceFgColors,
+				defaults
 			}}>
 			{ children }
 		</TokensContext.Provider>

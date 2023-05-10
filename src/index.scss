@@ -327,15 +327,19 @@ html, body, #root {
 			.editor-container {
 				width: 75%;
 				height: 100%;
+				display: grid;
+				grid-template-rows: 6% 4% 70% 20%;
 
 				.tabs {
 					display: flex;
 
 					.tab {
 						display: flex;
-						height: 2rem;
+						height: 100%;
 						gap: 0.5rem;
-						padding: 0.5rem;
+						align-items: center;
+						padding-left: 0.5rem;
+						padding-right: 0.5rem;
 
 						div {
 							width: 1rem;
@@ -344,15 +348,15 @@ html, body, #root {
 				}
 				.directive {
 					display: flex;
-					height: 1.5rem;
-					padding-top: 0.25rem;
-					padding-bottom: 0.25rem;
+					height: 100%;
+					align-items: center;
 					gap: 0.2rem;
 					div { width: 1rem };
 				}
 				.editor-area {
 					display: flex;
-					height: 70%;
+					height: 100%;
+					font-family: "Fragment Mono";
 
 					.whitespace {
 						height: 1rem;
@@ -362,9 +366,11 @@ html, body, #root {
 						margin-left: 1rem;
 					}
 					.gutter {
-						padding-left: 1.5rem;
-						padding-right: 1.5rem;
+						width: 6%;
+						height: 100%;
 						display: grid;
+						justify-items: center;
+						justify-content: center;
 						grid-template-columns: 1rem;
 						grid-template-rows: repeat(auto-fill, 1rem);
 						text-align: right;
@@ -374,7 +380,6 @@ html, body, #root {
 					.editor {
 						width: 94%;
 						height: 100%;
-						font-family: "Fragment Mono";
 						
 						p {
 							height: 1rem;
@@ -384,7 +389,7 @@ html, body, #root {
 
 				.terminal {
 					width: 100%;
-					height: 20%;
+					height: 100%;
 					padding: 1rem;
 					
 					.terminal-tabs {
@@ -393,8 +398,12 @@ html, body, #root {
 						gap: 1rem;
 						margin-bottom: 1rem;
 
+						> * {
+							padding-bottom: 1.2rem;
+						}
 						.terminal-menus {
 							display: flex;
+							align-items: center;
 							margin-left: auto;
 							gap: 0.5rem;
 							div { width: 1rem };
@@ -454,6 +463,7 @@ html, body, #root {
 	width: 1rem;
 	height: 1rem;
 }
+.active-line { display: flex; };
 .punctuation {
 	color: var(--punctuation);
 }

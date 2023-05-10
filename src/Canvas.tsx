@@ -6,7 +6,7 @@ import { Keywords, Operators, Fns_classes_consts, Strings, Parameters, Atts_prop
 
 export const Canvas = () => {
 
-    const {syntaxColors, interfaceColors, interfaceFgColors} = useContext(TokensContext);
+    const {syntaxColors, interfaceColors, interfaceFgColors, defaults} = useContext(TokensContext);
     
     const gutterNumbers = (start: number, finish: number) => {
         let nubmers = [];
@@ -53,7 +53,12 @@ export const Canvas = () => {
                             <Svgs svg={svgs.settings} _class={"svg"}/>
                         </div>
                     </div>
-                    <div className="sidebar" style={interfaceColors.sideBarBg}>
+                    <div className="sidebar" 
+                        style={{
+                            background: interfaceColors.sideBarBg.background,
+                            borderLeft: `solid 1px ${interfaceColors.sidebarBorders.background}`,
+                            borderRight: `solid 1px ${interfaceColors.sidebarBorders.background}`
+                        }}>
                         <div className="explorer">
                             <p>EXPLORER</p>
                             <Svgs svg={svgs.more} _class={"svg-active"}/>
@@ -111,19 +116,20 @@ export const Canvas = () => {
                 </div>
                 <div className="editor-container">
                     <div className="tabs" style={interfaceColors.titleBarBg}>
-                        <div className="tab">
+                        <div className="tab" style={interfaceColors.tabInactiveBg}>
                             <Svgs svg={svgs.scss}/>
                             <p>index.scss</p>
                         </div>
                         <div className="tab" style={interfaceColors.tabActiveBg}>
                             <Svgs svg={svgs.react}/>
                             <p>StylingSection.tsx</p>
+                            <Svgs svg={svgs.close} _class={"svg-active"}/>
                         </div>
-                        <div className="tab">
+                        <div className="tab" style={interfaceColors.tabInactiveBg}>
                             <Svgs svg={svgs.react}/>
                             <p>App.tsx</p>
                         </div>
-                        <div className="tab">
+                        <div className="tab" style={interfaceColors.tabInactiveBg}>
                             <Svgs svg={svgs.react}/>
                             <p>main.tsx</p>
                         </div>
@@ -160,11 +166,14 @@ export const Canvas = () => {
                             <div className="tab-space">
                                 <p style={syntaxColors.punctuation}><Atts_props_vars word="class"/><Operators word=":"/> <Strings word="string"/>;</p>
                                 <p style={syntaxColors.punctuation}><Atts_props_vars word="name"/><Operators word=":"/> <Strings word="string"/>;</p>
+                            </div>
+                            <div className="active-line" style={interfaceColors.editorSelection}>
+                                <div className="space"></div>
                                 <p style={syntaxColors.punctuation}><Atts_props_vars word="foreground"/><Operators word=":"/> <Strings word="string[]"/>;</p>
                             </div>
                             <p style={syntaxColors.punctuation}>&#125;;</p>
+                            <p className="whitespace"></p>
                             <p style={syntaxColors.punctuation}><Keywords word="type"/> <Ts_types word="TokensState"/> <Operators word="="/> &#123; <Atts_props_vars word="syntaxTokens"/><Operators word=":"/> <Ts_types word="Tokens"/>, <Atts_props_vars word="setSyntaxTokens"/><Operators word=":"/> <Ts_types word="any"/>&#125;;</p>
-                            <p style={syntaxColors.punctuation}><Keywords word="const"/> [<Fns_classes_consts word="searchValue"/>, <Fns_classes_consts word="setSearchValue"/>] <Operators word="="/> <Fns_classes_consts word="useState"/>&lt;<Ts_types word="string"/>&gt;(<Strings word=""/>);</p>
                             <p style={syntaxColors.punctuation}><Keywords word="const"/> &#123;<Fns_classes_consts word="syntaxTokens"/>, <Fns_classes_consts word="setSyntaxTokens"/>&#125; <Operators word="="/> <Fns_classes_consts word="useContext"/>&lt;<Ts_types word="TokensState"/>&gt;(<Fns_classes_consts word="TokensContext"/>);</p>
                             <p className="whitespace"></p>
                             <p style={syntaxColors.punctuation}><Keywords word="const"/> <Fns_classes_consts word="handleTokenUpdate"/> <Operators word="="/> (<Parameters word="e"/><Operators word=":"/> <Ts_types word="React"/>.<Ts_types word="ChangeEvent"/>&lt;<Ts_types word="HTMLInputElement"/>&gt;, <Atts_props_vars word="index"/><Operators word=":"/> <Ts_types word="number"/>) <Operators word="=&gt;"/> &#123;</p>
@@ -172,26 +181,31 @@ export const Canvas = () => {
                                 <p style={syntaxColors.punctuation}><Keywords word="const"/> <Fns_classes_consts word="tokens"/> <Operators word="="/> [<Operators word="..."/><Fns_classes_consts word="syntaxTokens"/>];</p>
                                 <p style={syntaxColors.punctuation}><Fns_classes_consts word="tokens"/>[<Fns_classes_consts word="index"/>].<Atts_props_vars word="settings"/>.<Atts_props_vars word="foreground"/> <Operators word="="/> <Atts_props_vars word="e"/>.<Atts_props_vars word="target"/>.<Atts_props_vars word="value"/>;</p>
                             </div>
+                            <p className="whitespace"></p>
                             <p style={syntaxColors.punctuation}><Keywords word="return"/> (</p>
                             <div className="tab-space">
                                 <p style={syntaxColors.punctuation}>&lt;<Tags word="div"/> <Atts_props_vars word="className"/><Operators word="="/><Strings word="styles-container"/>&gt;</p>
                                 <div className="tab-space">
-                                    <p style={syntaxColors.punctuation}>&lt;<Tags word="div"/> <Atts_props_vars word="className"/><Operators word="="/><Strings word="search-container"/>&gt;</p>
+                                    <p style={syntaxColors.punctuation}>&lt;<Tags word="div"/> <Atts_props_vars word="className"/><Operators word="="/><Strings word="some-element"/>&gt;</p>
+                                </div>
+                                <div className="tab-space">
+                                    <p style={syntaxColors.punctuation}>&lt;<Tags word="div"/> <Atts_props_vars word="className"/><Operators word="="/><Strings word="class"/>&gt;</p>
                                     <div className="tab-space">
-                                        <p style={syntaxColors.punctuation}>&lt;<Tags word="div"/> <Atts_props_vars word="className"/><Operators word="="/><Strings word="search-svg"/>&gt;</p>
-                                        <div className="tab-space">
-                                            <p style={syntaxColors.punctuation}>&lt;<Tags word="img"/> <Atts_props_vars word="src"/><Operators word="="/>&#123;<Atts_props_vars word="svgs"/>.<Atts_props_vars word="search"/>&#125; <Atts_props_vars word="alt"/><Operators word="="/><Strings word="search"/>&gt;&lt;/<Tags word="img"/>&gt;</p>
-                                        </div>
-                                        <p style={syntaxColors.punctuation}>&lt;/<Tags word="div"/>&gt;</p>
+                                        <p style={syntaxColors.punctuation}>&lt;<Tags word="img"/> <Atts_props_vars word="src"/><Operators word="="/>&#123;<Atts_props_vars word="svgs"/>.<Atts_props_vars word="search"/>&#125; <Atts_props_vars word="alt"/><Operators word="="/><Strings word="search"/>&gt;&lt;/<Tags word="img"/>&gt;</p>
                                     </div>
+                                    <p style={syntaxColors.punctuation}>&lt;/<Tags word="div"/>&gt;</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="terminal" style={interfaceColors.panelBg}>
+                    <div className="terminal" 
+                        style={{
+                            background: interfaceColors.panelBg.background,
+                            borderTop: `solid 1px ${interfaceColors.panelBorder.background}`
+                        }}>
                         <div className="terminal-tabs">
                             <p>PROBLEMS</p>
-                            <p>TERMINAL</p>
+                            <p style={{borderBottom: `solid 1px ${interfaceFgColors.text}`}}>TERMINAL</p>
                             <p>OUTPUT</p>
                             <p>DEBUG CONSOLE</p>
                             <div className="terminal-menus">
@@ -204,7 +218,7 @@ export const Canvas = () => {
                                 <Svgs svg={svgs.close} _class={"svg-active"}/>
                             </div>
                         </div>
-                        <p>C:\Users\ur-project &gt; <span>git</span> <span>something</span></p>
+                        <p style={interfaceFgColors.terminalText}>C:\Users\ur-project &gt; <span style={{color: defaults["terminal.ansiYellow"]}}>git</span> something</p>
                     </div>
                 </div>
             </div>
