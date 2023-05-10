@@ -8,9 +8,12 @@ export const Canvas = () => {
 
     const {syntaxColors, interfaceColors, interfaceFgColors} = useContext(TokensContext);
     
-    const gutterNumbers = [];
-    for (let i = 0; i < 30; i++) {
-        gutterNumbers.push(i);
+    const gutterNumbers = (start: number, finish: number) => {
+        let nubmers = [];
+        for (let i = start; i <= finish; i++) {
+            nubmers.push(i);
+        };
+        return nubmers;
     };
 
 	return (
@@ -39,8 +42,9 @@ export const Canvas = () => {
                     <div className="activity-bar" style={interfaceColors.activityBarBg}>
                         <Svgs svg={svgs.files} _class={"svg-active"}/>
                         <Svgs svg={svgs.search} _class={"svg"}/>
-                        <div style={{rotate : "180deg", transform : "scaleX(-1)"}}>
-                            <Svgs svg={svgs.branch} _class={"svg"}/>
+                        <div className="branch">
+                            <Svgs svg={svgs.branch} _class={"svg rotate"}/>
+                            <div className="badge" style={interfaceColors.activityBarBadge}>2</div>
                         </div>
                         <Svgs svg={svgs.debug} _class={"svg"}/>
                         <Svgs svg={svgs.extensions} _class={"svg"}/>
@@ -124,15 +128,25 @@ export const Canvas = () => {
                             <p>main.tsx</p>
                         </div>
                     </div>
-                    <div className="directive" style={interfaceColors.breadcrumbBg}>
+                    <div className="directive" 
+                        style={{
+                            background: interfaceColors.breadcrumbBg.background,
+                            borderBottom: `solid 1px ${interfaceColors.contrastBorder.background}`
+                        }}>
                         <p>src</p>
                         <Svgs svg={svgs.arrow} _class={"svg-active right"}/>
                         <Svgs svg={svgs.react}/>
                         <p>App.tsx</p>
                     </div>
                     <div className="editor-area">
-                        <div className="gutter" style={interfaceColors.gutterBg}>
-                            { gutterNumbers.map(i => <p>{i}</p>) }
+                        <div className="gutter" 
+                            style={{
+                                background: interfaceColors.gutterBg.background,
+                                color: interfaceFgColors.inactive.color
+                            }}>
+                            { gutterNumbers(1, 10).map(i => <p>{i}</p>) }
+                            <p style={interfaceFgColors.text}>11</p>
+                            { gutterNumbers(12, 30).map(i => <p>{i}</p>) }
                         </div>
                         <div className="editor" style={interfaceColors.editorBg}>
                             <p style={syntaxColors.punctuation}><Keywords word="import"/> <Fns_classes_consts word="React"/>, &#123; <Fns_classes_consts word="useState"/>, <Fns_classes_consts word="useContext"/> &#125; <Keywords word="from"/> <Strings word="react"/>;</p>
@@ -197,9 +211,7 @@ export const Canvas = () => {
             <div className="status-bar-wrapper" style={interfaceColors.statusBarBg}>
                 <Svgs svg={svgs.remote} _class={"svg-active remote"}/>
                 <div className="status-bar">
-                    <div className="oneRem" style={{rotate : "180deg", transform : "scaleX(-1)"}}>
-                        <Svgs svg={svgs.branch} _class={"svg-active"}/>
-                    </div>
+                <Svgs svg={svgs.branch} _class={"svg-active rotate oneRem"}/>
                     <p>main*</p>
                     <div className="status-right">
                         <p>Some text</p>
