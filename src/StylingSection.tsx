@@ -1,11 +1,11 @@
 import React, { useContext, useRef, useEffect } from 'react'
-import { TokensContext, Token} from "./TokensContext.tsx";
+import { TokensContext, TextToken, BgToken} from "./TokensContext.tsx";
 
 export const StylingSection = () => {
 
-	type SyntaxState = {syntaxTokens: Token[], setSyntaxTokens: any};
-	type InterfaceState = {interfaceTokens: Token[], setInterfaceTokens: any};
-	type InterfaceTextState = {interfaceFgTokens: Token[], setInterfaceFgTokens: any};
+	type SyntaxState = {syntaxTokens: TextToken[], setSyntaxTokens: any};
+	type InterfaceState = {interfaceTokens: BgToken[], setInterfaceTokens: any};
+	type InterfaceTextState = {interfaceFgTokens: TextToken[], setInterfaceFgTokens: any};
 	const {syntaxTokens, setSyntaxTokens} = useContext<SyntaxState>(TokensContext);
 	const {interfaceTokens, setInterfaceTokens} = useContext<InterfaceState>(TokensContext);
 	const {interfaceFgTokens, setInterfaceFgTokens} = useContext<InterfaceTextState>(TokensContext);
@@ -57,7 +57,13 @@ export const StylingSection = () => {
 						syntaxTokens.map((el, index) => {
 							return (
 								<div className="styles-wrapper" key={el.class}>
-									<div className="thumb" style={{backgroundColor : el.settings.foreground}}></div>
+									<input
+										type="color"
+										className="thumb"
+										value={el.settings.foreground}
+										onChange={e => handleTokenUpdate(e, index, "syntax") }
+										style={{backgroundColor: el.settings.foreground}}
+									></input>
 									<div className="text">
 										<p>{el.name}</p>
 										<input
@@ -77,7 +83,13 @@ export const StylingSection = () => {
 						interfaceFgTokens.map((el, index) => {
 							return (
 								<div className="styles-wrapper" key={el.class}>
-									<div className="thumb" style={{backgroundColor : el.settings.foreground}}></div>
+									<input
+										type="color"
+										className="thumb"
+										value={el.settings.foreground}
+										onChange={e => handleTokenUpdate(e, index, "i-text") }
+										style={{backgroundColor: el.settings.foreground}}
+									></input>
 									<div className="text">
 										<p>{el.name}</p>
 										<input
@@ -95,7 +107,13 @@ export const StylingSection = () => {
 						interfaceTokens.map((el, index) => {
 							return (
 								<div className="styles-wrapper" key={el.class}>
-									<div className="thumb" style={{backgroundColor : el.settings.background}}></div>
+									<input
+										type="color"
+										className="thumb"
+										value={el.settings.background}
+										onChange={e => handleTokenUpdate(e, index, "interface") }
+										style={{backgroundColor: el.settings.background}}
+									></input>
 									<div className="text">
 										<p>{el.name}</p>
 										<input

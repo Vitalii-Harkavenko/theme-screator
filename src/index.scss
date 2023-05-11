@@ -4,6 +4,7 @@
 $bg : #0c0a11;
 $main : #1d1b23;
 $text : #cacaca;
+$preview: #211e26;
 
 @mixin placeholder-styles {
 	font-family: 'Montserrat', sans-serif;
@@ -22,6 +23,36 @@ input::-moz-placeholder {
 }
 input:-ms-input-placeholder {
 	@include placeholder-styles;
+}
+.preview-code::-webkit-scrollbar {
+	width: 0.5rem;
+	background-color: transparent;
+}
+.preview-code::-webkit-scrollbar-thumb {
+	background-color: rgb(112, 112, 112);
+	border-bottom: 0.5rem solid $main;
+	border-top: 0.5rem solid $main;
+}
+/* For Firefox */
+.preview-code {
+	scrollbar-width: thin;
+	scrollbar-color: rgb(112, 112, 112) $main;
+}
+.preview-code::-moz-scrollbar-thumb {
+	background-color: rgb(112, 112, 112);
+	border-bottom: 0.5rem solid $main;
+	border-top: 0.5rem solid $main;
+}
+/* For Edge and IE */
+.preview-code {
+	-ms-overflow-style: none;
+	scrollbar-width: thin;
+	scrollbar-color: rgb(112, 112, 112) $main;
+}
+.preview-code::-ms-scrollbar-thumb {
+	background-color: rgb(112, 112, 112);
+	border-bottom: 0.5rem solid $main;
+	border-top: 0.5rem solid $main;
 }
 .color-tokens::-webkit-scrollbar {
 	width: 0.5rem;
@@ -82,6 +113,8 @@ html, body, #root {
 	display: grid;
 	grid-template-columns: 26% 74%;
 	align-items: center;
+	position: relative;
+	color: $text;
 
 	.styles-container {
 		width: 100%;
@@ -89,7 +122,6 @@ html, body, #root {
 		padding-right: 1rem;
 		height: 100%;
 		background-color: $main;
-		color: $text;
 		filter: drop-shadow(5px 0 5px rgba(0, 0, 0, 0.5));
 		
 		.tab-switcher {
@@ -148,6 +180,7 @@ html, body, #root {
 						width: 100%;
 						height: 100%;
 						border-radius: 0.5rem;
+						padding: 0;
 					}
 					.text {
 						display: flex;
@@ -163,6 +196,58 @@ html, body, #root {
 						}
 					}
 				}
+			}
+		}
+	}
+	.preview-button {
+		position: absolute;
+		background: transparent;
+		top: 1.5rem;
+		right: 1.5rem;
+		color: $text;
+	}
+	.none { display: none; }
+	.code-preview {
+		position: absolute;
+		z-index: 99;
+		backdrop-filter: blur(10px);
+		background-color: rgba(0, 0, 0, 0.5);
+		width: 74%;
+		height: 100%;
+		right: 0;
+
+		.preview-container {
+			position: absolute;
+			top: 5%;
+			left: 5%;
+			width: 90%;
+			height: 90%;
+			background-color: $preview;	
+			border: solid 2px lighten($preview, 10%);
+			z-index: 100;
+			border-radius: 1rem;
+			overflow: hidden;
+			
+			.preview-desc {
+				display: flex;
+				padding: 1rem;
+				height: 10%;
+				width: 100%;
+				border-bottom: solid 2px lighten($preview, 10%);
+				background-color: rgba(0, 0, 0, 0.5);
+				align-items: center;
+				justify-content: space-between;
+
+				button {
+					background: transparent;
+					> * {
+						width: 2em;
+					}
+				}
+			}
+			.preview-code {
+				height: 90%;
+				overflow-y: scroll;
 			}
 		}
 	}
@@ -478,4 +563,8 @@ html, body, #root {
 }
 .operators {
 	color: var(--operators);
+}
+input::-webkit-color-swatch { border: none; }
+input[type="color"]::-moz-color-swatch {
+    border: none;
 }
