@@ -150,9 +150,9 @@ export const Canvas = () => {
                                 background: interfaceColors.gutterBg.background,
                                 color: interfaceFgColors.inactive.color
                             }}>
-                            { gutterNumbers(1, 10).map(i => <p>{i}</p>) }
-                            <p style={interfaceFgColors.text}>11</p>
-                            { gutterNumbers(12, 30).map(i => <p>{i}</p>) }
+                            { gutterNumbers(1, 10).map(i => <p key={i}>{i}</p>) }
+                            <p style={interfaceFgColors.text} key={11}>11</p>
+                            { gutterNumbers(12, 30).map(i => <p key={i}>{i}</p>) }
                         </div>
                         <div className="editor" style={interfaceColors.editorBg}>
                             <p style={syntaxColors.punctuation}><Keywords word="import"/> <Fns_classes_consts word="React"/>, &#123; <Fns_classes_consts word="useState"/>, <Fns_classes_consts word="useContext"/> &#125; <Keywords word="from"/> <Strings word="react"/>;</p>

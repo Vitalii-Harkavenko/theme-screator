@@ -171,6 +171,7 @@ html, body, #root {
 
 				.styles-wrapper {
 					display: grid;
+					position: relative;
 					grid-template-columns: 3rem 1fr;
 					grid-gap: 1rem;
 					width: 100%;
