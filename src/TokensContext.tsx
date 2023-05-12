@@ -28,20 +28,26 @@ export const TokensContext = React.createContext<any>(undefined);
 
 export const TokensProvider: React.FC<ProviderProps> = ({ children }) => {
     
-    useEffect(()=> {
-		const tokensData = localStorage.getItem("tokensData");
+    const loadLocalData = (token: string) => {
+        const tokensData = localStorage.getItem("tokensData");
+
         if (tokensData && tokensData !== "{}") {
             const parsedData = JSON.parse(tokensData);
-           
-            setSyntaxTokens(parsedData.syntaxTokens);
-            setInterfaceTokens(parsedData.interfaceTokens);
-            setInterfaceFgTokens(parsedData.interfaceFgTokens);
+            return parsedData[token];
+        } else {
+            if (token === "syntaxTokens") {
+                return tokens.syntax;
+            } else if (token === "interfaceTokens") {
+                return tokens.interface;
+            } else if (token === "interfaceFgTokens") {
+                return tokens.interfaceText;
+            }
         }
-	}, [])
-
-	const [syntaxTokens, setSyntaxTokens] = useState<TextTokens>(tokens.syntax);
-    const [interfaceTokens, setInterfaceTokens] = useState<BgTokens>(tokens.interface);
-    const [interfaceFgTokens, setInterfaceFgTokens] = useState<TextTokens>(tokens.interfaceText);
+    };
+    
+	const [syntaxTokens, setSyntaxTokens] = useState<TextTokens>(loadLocalData("syntaxTokens"));
+    const [interfaceTokens, setInterfaceTokens] = useState<BgTokens>(loadLocalData("interfaceTokens"));
+    const [interfaceFgTokens, setInterfaceFgTokens] = useState<TextTokens>(loadLocalData("interfaceFgTokens"));
     const defaults = tokens.defaults
 
 	const syntaxColors: {[key : string]: any} = {};

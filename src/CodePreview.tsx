@@ -16,6 +16,7 @@ export const CodePreview = () => {
 	type ColorCustomizations = {
 		[key: string]: string;
 	};
+
 	const {syntaxTokens, interfaceTokens, interfaceFgTokens, defaults} = useContext(TokensContext);
 	const preview_card = useRef<HTMLDivElement>(null);
 	const [textMateRules, setTextMateRules] = useState<TextMateRules>([]);
@@ -53,6 +54,23 @@ export const CodePreview = () => {
 		preview_card.current?.classList.toggle("none");
 	}
 
+	const handleClipboard = (e: React.MouseEvent<HTMLButtonElement>) => {
+
+		const indentedInterfaceTokens = JSON.stringify(colorCustomizations, null, 4);
+		const indentedSyntaxTokens = JSON.stringify(textMateRulesObj, null, 4);
+		navigator.clipboard.writeText(
+			`"workbench.colorCustomizations": ${indentedInterfaceTokens},\n` +
+			`"editor.tokenColorCustomizations": ${indentedSyntaxTokens},`
+		);
+		
+		const button = e.target as HTMLButtonElement;
+		button.innerText = "Copied!";
+		setTimeout(() => {
+			button.innerText = "Copy code"
+		}, 3000)
+	};
+	  
+
 	return (
 		<>
 			<button className="preview-button" onClick={handlePreview}>Show code</button>
@@ -61,15 +79,15 @@ export const CodePreview = () => {
 					<div className="preview-desc">
 						<p>Copy the code to your settings.json file and you're done</p>
 						<div style={{display: "flex", gap: "1rem", alignItems: "center"}}>
-							<div className="copy-buttton">placeholder</div>
+							<button onClick={handleClipboard}>Copy code</button>
 							<button onClick={handlePreview}>
 								<Svgs svg={close} />
 							</button>
 						</div>
 					</div>
 					<div className="preview-code" style={{fontSize: "0.9rem"}}>
-					<pre>"editor.tokenColorCustomizations": {`${JSON.stringify(textMateRulesObj, null, 2)}`}</pre>
 					<pre>"workbench.colorCustomizations": {`${JSON.stringify(colorCustomizations, null, 2)}`}</pre>
+					<pre>"editor.tokenColorCustomizations": {`${JSON.stringify(textMateRulesObj, null, 2)}`}</pre>
 					</div>
 				</div>
 			</div>

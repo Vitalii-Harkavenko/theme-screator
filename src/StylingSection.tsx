@@ -66,12 +66,20 @@ export const StylingSection = () => {
 
 	const [activePicker, setActivePicker] = useState('');
 	const [mouseOutside, setMouseOutside] = useState(true);
-
+	
 	const handleClickOutside = () => {
-		if (mouseOutside) {
-			setActivePicker('');
-		}
-	}
+		if (activePicker !== '' && mouseOutside)
+		setActivePicker('');
+	};
+	
+	useEffect(() => {
+		document.addEventListener("click", handleClickOutside);
+	  
+		return () => {
+		  document.removeEventListener("click", handleClickOutside);
+		};
+	}, [mouseOutside, activePicker]);
+	  
 
 	return (
 		<div className="styles-container">
@@ -84,7 +92,12 @@ export const StylingSection = () => {
 					{
 						syntaxTokens.map((el, index) => {
 							return (
-								<div className="styles-wrapper" key={el.class}>
+								<div 
+									className="styles-wrapper"
+									key={el.class}
+									onMouseLeave={() => setMouseOutside(true)}
+									onMouseOver={() => setMouseOutside(false)}
+								>
 									<div 
 										className="thumb" 
 										style={{backgroundColor : el.settings.foreground}}
@@ -100,11 +113,7 @@ export const StylingSection = () => {
 										></input>
 									</div>
 									{activePicker === el.class && (
-										<div 
-											style={{position: "absolute", zIndex: "10", top: "4rem", left: "3rem"}}
-											onMouseLeave={() => setMouseOutside(true)} 
-											onMouseOver={() => setMouseOutside(false)} 
-											onClick={handleClickOutside}>
+										<div style={{position: "absolute", zIndex: "10", top: "4rem", left: "4rem"}}>
 											<ChromePicker
 												color={el.settings.foreground}
 												onChange={(c: {[key:string]:string}) => handleTokenUpdate(c.rgb, index, "syntax")}
@@ -120,7 +129,12 @@ export const StylingSection = () => {
 					{
 						interfaceFgTokens.map((el, index) => {
 							return (
-								<div className="styles-wrapper" key={el.class}>
+								<div 
+									className="styles-wrapper"
+									key={el.class}
+									onMouseLeave={() => setMouseOutside(true)}
+									onMouseOver={() => setMouseOutside(false)}
+								>
 									<div 
 										className="thumb" 
 										style={{backgroundColor : el.settings.foreground}}
@@ -136,15 +150,11 @@ export const StylingSection = () => {
 										></input>
 									</div>
 									{activePicker === el.class && (
-											<div 
-												style={{position: "absolute", zIndex: "10", top: "4rem", left: "3rem"}}
-												onMouseLeave={() => setMouseOutside(true)} 
-												onMouseOver={() => setMouseOutside(false)} 
-												onClick={handleClickOutside}>
-												<ChromePicker
-													color={el.settings.foreground}
-													onChange={(c: {[key:string]:string}) => handleTokenUpdate(c.rgb, index, "i-text")}
-												/>
+										<div style={{position: "absolute", zIndex: "10", top: "4rem", left: "4rem"}}>
+											<ChromePicker
+												color={el.settings.foreground}
+												onChange={(c: {[key:string]:string}) => handleTokenUpdate(c.rgb, index, "i-text")}
+											/>
 										</div>
         							)}
 								</div>
@@ -154,7 +164,12 @@ export const StylingSection = () => {
 					{
 						interfaceTokens.map((el, index) => {
 							return (
-								<div className="styles-wrapper" key={el.class}>
+								<div 
+									className="styles-wrapper"
+									key={el.class}
+									onMouseLeave={() => setMouseOutside(true)}
+									onMouseOver={() => setMouseOutside(false)}
+								>
 									<div 
 										className="thumb" 
 										style={{backgroundColor : el.settings.background}}
@@ -170,11 +185,7 @@ export const StylingSection = () => {
 										></input>
 									</div>
 									{activePicker === el.class && (
-										<div 
-											style={{position: "absolute", zIndex: "10", top: "4rem", left: "3rem"}}
-											onMouseLeave={() => setMouseOutside(true)} 
-											onMouseOver={() => setMouseOutside(false)} 
-											onClick={handleClickOutside}>
+										<div style={{position: "absolute", zIndex: "10", top: "4rem", left: "4rem"}}>
 											<ChromePicker
 												color={el.settings.background}
 												onChange={(c: {[key:string]:string}) => handleTokenUpdate(c.rgb, index, "interface")}
