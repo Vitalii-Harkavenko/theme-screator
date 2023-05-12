@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useEffect, useState } from 'react'
+import { useContext, useRef, useEffect, useState } from 'react'
 import { TokensContext, TextToken, BgToken} from "./TokensContext.tsx";
-import { ChromePicker } from 'react-color';
+import { ChromePicker, ColorResult, RGBColor } from 'react-color';
 
 export const StylingSection = () => {
 
@@ -12,9 +12,9 @@ export const StylingSection = () => {
 	const {interfaceTokens, setInterfaceTokens} = useContext<InterfaceState>(TokensContext);
 	const {interfaceFgTokens, setInterfaceFgTokens} = useContext<InterfaceTextState>(TokensContext);
 
-	type Rgba = { r: number; g: number; b: number; a: number };
-	function rgbaToHex8(rgba: Rgba): string {
-		const { r, g, b, a } = rgba;
+	function rgbaToHex8(rgba: RGBColor): string {
+		let { r, g, b, a } = rgba;
+		if (a === undefined) a = 1;
 		const hexR = r.toString(16).padStart(2, '0');
 		const hexG = g.toString(16).padStart(2, '0');
 		const hexB = b.toString(16).padStart(2, '0');
@@ -22,7 +22,7 @@ export const StylingSection = () => {
 		return `#${hexR}${hexG}${hexB}${hexA}`;
 	};
 
-    const handleTokenUpdate = (c: Rgba | string, index: number, tokenType: string) => {
+    const handleTokenUpdate = (c: RGBColor | string, index: number, tokenType: string) => {
 		let hexColor: string;
 		if (typeof c === "string") {
 			hexColor = c;
@@ -116,7 +116,7 @@ export const StylingSection = () => {
 										<div style={{position: "absolute", zIndex: "10", top: "4rem", left: "4rem"}}>
 											<ChromePicker
 												color={el.settings.foreground}
-												onChange={(c: {[key:string]:string}) => handleTokenUpdate(c.rgb, index, "syntax")}
+												onChange={(c: ColorResult) => handleTokenUpdate(c.rgb, index, "syntax")}
 											/>
 										</div>
         							)}
@@ -153,7 +153,7 @@ export const StylingSection = () => {
 										<div style={{position: "absolute", zIndex: "10", top: "4rem", left: "4rem"}}>
 											<ChromePicker
 												color={el.settings.foreground}
-												onChange={(c: {[key:string]:string}) => handleTokenUpdate(c.rgb, index, "i-text")}
+												onChange={(c: ColorResult) => handleTokenUpdate(c.rgb, index, "i-text")}
 											/>
 										</div>
         							)}
@@ -188,7 +188,7 @@ export const StylingSection = () => {
 										<div style={{position: "absolute", zIndex: "10", top: "4rem", left: "4rem"}}>
 											<ChromePicker
 												color={el.settings.background}
-												onChange={(c: {[key:string]:string}) => handleTokenUpdate(c.rgb, index, "interface")}
+												onChange={(c: ColorResult) => handleTokenUpdate(c.rgb, index, "interface")}
 											/>
 										</div>
         							)}
