@@ -44,7 +44,7 @@ export const Canvas = () => {
                         <Svgs svg={svgs.search} _class={"svg"}/>
                         <div className="branch">
                             <Svgs svg={svgs.branch} _class={"svg rotate"}/>
-                            <div className="badge" style={interfaceColors.activityBarBadge}>2</div>
+                            <div className="badge" style={interfaceColors.badgesButtons}>2</div>
                         </div>
                         <Svgs svg={svgs.debug} _class={"svg"}/>
                         <Svgs svg={svgs.extensions} _class={"svg"}/>
